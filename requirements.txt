@@ -1,0 +1,11 @@
+requests
+python-dotenv
+jinja2
+Pillow
+openai
+
+pydantic==2.10.3
+pydantic-settings==2.7.0
+
+
+playwright

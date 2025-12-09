@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Verification Report - {{ timestamp }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;    /* Slate 900 */
+            --secondary: #334155;  /* Slate 700 */
+            --accent: #2563eb;     /* Blue 600 */
+            --success: #059669;    /* Emerald 600 */
+            --success-bg: #ecfdf5;
+            --danger: #dc2626;     /* Red 600 */
+            --danger-bg: #fef2f2;
+            --bg-body: #f1f5f9;    /* Slate 100 */
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--secondary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.025em;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .meta-info {
+            text-align: right;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* --- Verification Banner --- */
+        .verification-banner {
+            background: linear-gradient(to right, #059669, #10b981);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .verification-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .verification-content h3 { margin: 0; font-size: 16px; font-weight: 600; }
+        .verification-content p { margin: 0; font-size: 14px; opacity: 0.9; }
+
+        /* --- Cards & Grid --- */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* --- Stats Row --- */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-label { font-size: 12px; text-transform: uppercase; color: #64748b; font-weight: 600; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 700; color: var(--primary); }
+        .stat-value.success { color: var(--success); }
+        .stat-value.failure { color: var(--danger); }
+
+        /* --- AI Summary Highlight --- */
+        .llm-summary-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .llm-summary-box h3 { color: var(--primary); margin-bottom: 10px; font-size: 18px; }
+        .llm-summary-box p { color: var(--secondary); white-space: pre-wrap; font-size: 15px; }
+
+        /* --- Data Lists (Agent/VM info) --- */
+        .data-list { list-style: none; }
+        .data-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+        .data-list li:last-child { border-bottom: none; }
+        .data-list strong { color: var(--primary); font-weight: 600; }
+        .data-list span { color: #64748b; font-family: 'Monaco', 'Consolas', monospace; font-size: 13px; }
+
+        /* --- Steps Table --- */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-success { background-color: var(--success-bg); color: var(--success); }
+        .badge-failure { background-color: var(--danger-bg); color: var(--danger); }
+
+        /* --- Screenshots --- */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .screenshot-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            background: #fff;
+        }
+        .screenshot-item:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .screenshot-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+        .screenshot-caption {
+            padding: 10px;
+            font-size: 12px;
+            background: #f8fafc;
+            border-top: 1px solid var(--border);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+
+        /* --- Action Log --- */
+        .log-container {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .log-entry { display: flex; gap: 15px; margin-bottom: 8px; }
+        .log-time { color: #94a3b8; min-width: 140px; }
+        .log-action { color: #60a5fa; font-weight: bold; }
+        .log-detail { color: #cbd5e1; }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { max-width: 100%; }
+            .card, .stat-box { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+            .log-container { border: 1px solid #ccc; background: #fff; color: #333; max-height: none; }
+            .log-time { color: #666; }
+            .log-action { color: #000; }
+            .log-detail { color: #333; }
+            .verification-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .screenshot-item { break-inside: avoid; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-container { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <header class="report-header">
+            <div class="brand">
+                <h1>Slide<span>Verify</span> Report</h1>
+            </div>
+            <div class="meta-info">
+                <p><strong>Generated:</strong> {{ timestamp }}</p>
+                <p>System: Automated BCDR Validation</p>
+            </div>
+        </header>
+
+        {% if agent.get('llm_verified') %}
+        <div class="verification-banner">
+            <div class="verification-icon">✓</div>
+            <div class="verification-content">
+                <h3>Automated Verification Successful</h3>
+                <p>This BCDR test successfully utilized AI-driven visual analysis to confirm system integrity.</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="card">
+            <h2 class="section-title">Executive Summary</h2>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-label">Total Steps</div>
+                    <div class="stat-value">{{ total_steps }}</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-value {% if success_count == total_steps %}success{% else %}failure{% endif %}">
+                        {{ success_count }}/{{ total_steps }}
+                    </div>
+                </div>
+                {% if duration %}
+                <div class="stat-box">
+                    <div class="stat-label">Total Duration</div>
+                    <div class="stat-value" style="font-size: 20px;">{{ duration }}</div>
+                </div>
+                {% endif %}
+                <div class="stat-box">
+                    <div class="stat-label">VM State</div>
+                    <div class="stat-value" style="font-size: 20px; color: var(--secondary);">{{ vm.state }}</div>
+                </div>
+            </div>
+
+            {% if summary %}
+            <div class="llm-summary-box">
+                <h3>Test Insights</h3>
+                <p>{{ summary }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="info-grid">
+            <div class="card">
+                <h2 class="section-title">VM Configuration</h2>
+                <ul class="data-list">
+                    <li><strong>VM ID</strong> <span>{{ vm.virt_id }}</span></li>
+                    {% if vm.network_type %}
+                    <li><strong>Network</strong> <span>{{ vm.network_type }}</span></li>
+                    {% endif %}
+                    {% if vm.cpu_count %}
+                    <li><strong>vCPUs</strong> <span>{{ vm.cpu_count }}</span></li>
+                    {% endif %}
+                    {% if vm.memory_in_mb %}
+                    <li><strong>Memory</strong> <span>{{ vm.memory_in_mb }} MB</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title">Recovery Point</h2>
+                <ul class="data-list">
+                    <li><strong>Snapshot ID</strong> <span>{{ snapshot.snapshot_id }}</span></li>
+                    {% if snapshot.backup_started_at %}
+                    <li><strong>Started</strong> <span>{{ snapshot.backup_started_at }}</span></li>
+                    {% endif %}
+                    {% if snapshot.backup_ended_at %}
+                    <li><strong>Ended</strong> <span>{{ snapshot.backup_ended_at }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% if agent %}
+            <div class="card">
+                <h2 class="section-title">Agent Context</h2>
+                <ul class="data-list">
+                    {% if agent.hostname %}
+                    <li><strong>Hostname</strong> <span>{{ agent.hostname }}</span></li>
+                    {% endif %}
+                    <li><strong>Agent ID</strong> <span>{{ agent.agent_id }}</span></li>
+                    {% if agent.os %}
+                    <li><strong>OS</strong> <span>{{ agent.os }} {{ agent.os_version }}</span></li>
+                    {% endif %}
+                    {% if agent.ip_address %}
+                    <li><strong>IP Address</strong> <span>{{ agent.ip_address }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Validation Steps</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="80">#</th>
+                            <th>Description</th>
+                            <th width="150">Status</th>
+                            <th width="200">Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for step in steps %}
+                        <tr>
+                            <td>{{ step.step_number }}</td>
+                            <td>{{ step.description }}</td>
+                            <td>
+                                <span class="badge {% if step.success %}badge-success{% else %}badge-failure{% endif %}">
+                                    {% if step.success %}✓ Passed{% else %}✗ Failed{% endif %}
+                                </span>
+                            </td>
+                            <td style="color: #64748b;">{{ step.timestamp }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Visual Evidence</h2>
+            <div class="screenshot-grid">
+                {% for screenshot in screenshot_data %}
+                <div class="screenshot-item">
+                    {% if screenshot.base64 %}
+                    <a href="{{ screenshot.base64 }}" target="_blank">
+                        <img src="{{ screenshot.base64 }}" alt="{{ screenshot.name }}" title="Click to expand">
+                    </a>
+                    {% else %}
+                    <div style="height: 160px; display: flex; align-items: center; justify-content: center; background: #fef2f2; color: #dc2626;">
+                        No Image Available
+                    </div>
+                    {% endif %}
+                    <div class="screenshot-caption">{{ screenshot.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Technical Audit Log</h2>
+            <div class="log-container">
+                {% for action in actions %}
+                <div class="log-entry">
+                    <span class="log-time">{{ action.timestamp }}</span>
+                    <span>
+                        <span class="log-action">{{ action.action }}:</span>
+                        <span class="log-detail">{{ action.details }}</span>
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>CONFIDENTIAL - FOR INTERNAL USE ONLY</p>
+            <p>Generated by Slide Verify Automation System | {{ timestamp }}</p>
+        </div>
+
+    </div>
+</body>
+</html>

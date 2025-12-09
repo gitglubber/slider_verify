@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Verification Report - {{ timestamp }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        .summary-box {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .summary-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .success { color: #27ae60; }
+        .failure { color: #e74c3c; }
+
+        .steps-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .steps-table th,
+        .steps-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .steps-table th {
+            background: #34495e;
+            color: white;
+            font-weight: 600;
+        }
+
+        .steps-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-failure {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .screenshot-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .screenshot-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot-info {
+            padding: 10px;
+            background: #f8f9fa;
+        }
+
+        .screenshot-name {
+            font-weight: 600;
+            color: #2c3e50;
+            word-break: break-all;
+        }
+
+        .action-log {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .action-entry {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: white;
+            border-left: 3px solid #3498db;
+            border-radius: 3px;
+        }
+
+        .action-time {
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+
+        .action-details {
+            margin-top: 5px;
+            color: #2c3e50;
+        }
+
+        .llm-summary {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .llm-summary h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .llm-summary p {
+            white-space: pre-wrap;
+            color: #856404;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VM Verification Report</h1>
+
+        {% if agent.get('llm_verified') %}
+        <div style="background: #d4edda; border: 2px solid #28a745; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+            <h3 style="color: #155724; margin: 0 0 10px 0;">✓ Automated Verification Enabled</h3>
+            <p style="color: #155724; margin: 0;">
+                This BCDR test used automated screenshot analysis to verify UI states.
+                Steps marked as successful were confirmed by analysis of the actual UI.
+            </p>
+        </div>
+        {% endif %}
+
+        <div class="summary-box">
+            <h3>Verification Summary</h3>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Report Generated</div>
+                    <div class="stat-value">{{ timestamp }}</div>
+                </div>
+                {% if duration %}
+                <div class="stat-card">
+                    <div class="stat-label">Duration</div>
+                    <div class="stat-value">{{ duration }}</div>
+                </div>
+                {% endif %}
+                <div class="stat-card">
+                    <div class="stat-label">Total Steps</div>
+                    <div class="stat-value">{{ total_steps }}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-value {% if success_count == total_steps %}success{% else %}failure{% endif %}">
+                        {{ success_count }}/{{ total_steps }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if agent %}
+        <h2>Agent Information</h2>
+        <div class="summary-box">
+            {% if agent.hostname %}
+            <p><strong>Hostname:</strong> {{ agent.hostname }}</p>
+            {% endif %}
+            <p><strong>Agent ID:</strong> {{ agent.agent_id }}</p>
+            {% if agent.os %}
+            <p><strong>Operating System:</strong> {{ agent.os }}</p>
+            {% endif %}
+            {% if agent.os_version %}
+            <p><strong>OS Version:</strong> {{ agent.os_version }}</p>
+            {% endif %}
+            {% if agent.ip_address %}
+            <p><strong>IP Address:</strong> {{ agent.ip_address }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <h2>Snapshot Information</h2>
+        <div class="summary-box">
+            <p><strong>Snapshot ID:</strong> {{ snapshot.snapshot_id }}</p>
+            {% if snapshot.backup_started_at %}
+            <p><strong>Backup Started:</strong> {{ snapshot.backup_started_at }}</p>
+            {% endif %}
+            {% if snapshot.backup_ended_at %}
+            <p><strong>Backup Ended:</strong> {{ snapshot.backup_ended_at }}</p>
+            {% endif %}
+        </div>
+
+        <h2>VM Information</h2>
+        <div class="summary-box">
+            <p><strong>VM ID:</strong> {{ vm.virt_id }}</p>
+            <p><strong>State:</strong> {{ vm.state }}</p>
+            {% if vm.network_type %}
+            <p><strong>Network:</strong> {{ vm.network_type }}</p>
+            {% endif %}
+            {% if vm.cpu_count %}
+            <p><strong>CPU Count:</strong> {{ vm.cpu_count }}</p>
+            {% endif %}
+            {% if vm.memory_in_mb %}
+            <p><strong>Memory:</strong> {{ vm.memory_in_mb }} MB</p>
+            {% endif %}
+        </div>
+
+        {% if summary %}
+        <div class="llm-summary">
+            <h3>BCDR Test Summary</h3>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+
+        <h2>Action Log</h2>
+        <div class="action-log">
+            {% for action in actions %}
+            <div class="action-entry">
+                <div class="action-time">{{ action.timestamp }}</div>
+                <div class="action-details">
+                    <strong>{{ action.action }}:</strong> {{ action.details }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2>Verification Steps</h2>
+        <table class="steps-table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for step in steps %}
+                <tr>
+                    <td>{{ step.step_number }}</td>
+                    <td>{{ step.description }}</td>
+                    <td>
+                        <span class="status-badge {% if step.success %}status-success{% else %}status-failure{% endif %}">
+                            {% if step.success %}✓ Success{% else %}✗ Failed{% endif %}
+                        </span>
+                    </td>
+                    <td>{{ step.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Screenshots</h2>
+        <div class="screenshots">
+            {% for screenshot in screenshot_data %}
+            <div class="screenshot-card">
+                {% if screenshot.base64 %}
+                <img src="{{ screenshot.base64 }}" alt="{{ screenshot.name }}"
+                     onclick="window.open(this.src)"
+                     title="Click to view full size">
+                {% else %}
+                <div style="padding: 20px; background: #f8d7da; color: #721c24; text-align: center;">
+                    Screenshot not available
+                </div>
+                {% endif %}
+                <div class="screenshot-info">
+                    <div class="screenshot-name">{{ screenshot.name }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="footer">
+            <p>Generated by Slide Verify Automation System</p>
+            <p>Report Date: {{ timestamp }}</p>
+        </div>
+    </div>
+</body>
+</html>
