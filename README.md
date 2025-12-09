@@ -2,10 +2,7 @@
 
 An automated system that uses the Slide API to create VM snapshots, perform verification tasks via noVNC, and generate comprehensive reports with AI-powered analysis.
 
-<details>
-<summary> Summary SlideVerify Report</summary>
-![SampleReport](image.png)
-</details>
+See image.png for a sample report..
 
 ## Security 
 
