@@ -236,7 +236,19 @@ class VMAutomation:
                 username_clean = username.split('\\')[-1] if '\\' in username else username
 
                 # Compare displayed username with expected username (case-insensitive)
-                if displayed_user_clean.lower() != username_clean.lower():
+                if displayed_user_clean.lower() == username_clean.lower():
+                    # Cached username matches expected - use it!
+                    logger.info(f"[OK] Cached username matches expected: {username}")
+                    logger.info("Will use cached user with password-only login")
+                    # Force password-only login since username is already correct
+                    field_detection = {
+                        'has_username': False,
+                        'has_password': True,
+                        'displayed_username': displayed_user,
+                        'description': f'Cached user matches: {displayed_user}'
+                    }
+                else:
+                    # Username mismatch - try to switch users
                     logger.warning(f"Username mismatch detected!")
                     logger.warning(f"  Expected: {username} (clean: {username_clean})")
                     logger.warning(f"  Displayed: {displayed_user} (clean: {displayed_user_clean})")
@@ -246,61 +258,47 @@ class VMAutomation:
                     self.page.keyboard.press("Escape")
                     time.sleep(3)
 
-                    # Take a screenshot to help AI find "Other user"
-                    screenshot_before_click, _ = self._capture_screenshot("03b_before_other_user_click")
+                    # Take a screenshot before clicking
+                    self._capture_screenshot("03b_before_other_user_click")
 
-                    # Try to detect and click "Other user" option using AI
-                    logger.info("Looking for 'Other user' option...")
-
-                    # Try multiple possible locations for "Other user" button
+                    # Click "Other user" option - try multiple locations
                     # Windows typically shows this at bottom left
+                    logger.info("Clicking 'Other user' option...")
                     other_user_locations = [
                         (150, 1000),  # Far bottom left
                         (200, 950),   # Bottom left
-                        (250, 1020),  # Very bottom left
+                        (150, 950),   # Left middle-bottom
+                        (200, 1020),  # Bottom left lower
+                        (100, 1000),  # Far left bottom
                     ]
 
-                    for x, y in other_user_locations:
-                        logger.info(f"Trying to click 'Other user' at VNC coords ({x}, {y})")
+                    for i, (x, y) in enumerate(other_user_locations, 1):
+                        logger.info(f"Attempt {i}/{len(other_user_locations)}: Clicking VNC coords ({x}, {y})")
                         self._click_vnc_at_coordinates(x, y)
-                        time.sleep(2)
+                        time.sleep(1)
 
-                    # Verify that "Other user" was clicked by checking for both username and password fields
-                    logger.info("Verifying that 'Other user' screen appeared...")
-                    screenshot_after_click, verification = self._capture_screenshot(
-                        "03c_after_other_user_click",
-                        verify_state="Windows login screen with BOTH username AND password fields visible and editable. "
-                                     "This should be the 'Other user' login screen where you can type a different username."
-                    )
+                    # Wait for the screen to change
+                    logger.info("Waiting 10 seconds for 'Other user' screen to appear...")
+                    time.sleep(10)
 
-                    if not (verification and verification.get("verified")):
-                        logger.error("[FAIL] Could not switch to 'Other user' - both fields not detected")
-                        logger.error("Will attempt to continue with cached user")
-                        # Reset back to password-only field detection
-                        field_detection = {'has_username': False, 'has_password': True, 'description': 'Fallback: switch failed'}
-                    else:
-                        logger.info("[OK] Successfully switched to 'Other user' - both fields detected")
+                    # Take screenshot and re-detect fields
+                    logger.info("Re-detecting login fields after user switch attempt...")
+                    screenshot_path_switch, _ = self._capture_screenshot("03c_after_other_user_click")
 
-                        # Wait 30 seconds for username field to stabilize (as requested by user)
-                        logger.info("Waiting 30 seconds for username field to stabilize...")
-                        time.sleep(30)
+                    if self.llm_client:
+                        field_detection = self.llm_client.detect_login_fields(screenshot_path_switch)
+                        logger.info(f"AI re-detected fields: {field_detection.get('description')}")
 
-                        # Re-detect fields after switching users
-                        logger.info("Re-detecting login fields after user switch...")
-                        screenshot_path_switch, _ = self._capture_screenshot("03d_after_user_switch_wait")
-
-                        if self.llm_client:
-                            field_detection = self.llm_client.detect_login_fields(screenshot_path_switch)
-                            logger.info(f"AI re-detected fields: {field_detection.get('description')}")
-
-                            # Verify we actually have both fields now
-                            if not (field_detection.get('has_username') and field_detection.get('has_password')):
-                                logger.warning("Warning: After switch, both fields not detected - may still be on cached user")
+                        # Check if we got both fields
+                        if field_detection.get('has_username') and field_detection.get('has_password'):
+                            logger.info("[OK] Successfully switched to 'Other user' - both fields now visible")
                         else:
-                            logger.warning("No LLM for re-detection - assuming both fields present")
-                            field_detection = {'has_username': True, 'has_password': True, 'description': 'After switch: both fields'}
-                else:
-                    logger.info(f"Username matches expected: {username}")
+                            logger.warning("[WARN] Both fields not detected after switch attempt")
+                            logger.warning("Will proceed with whatever fields are available")
+                    else:
+                        # No LLM - assume both fields present after clicking
+                        logger.warning("No LLM for re-detection - assuming both fields present")
+                        field_detection = {'has_username': True, 'has_password': True, 'description': 'After switch: both fields'}
 
             # Click on the screen to ensure focus
             self._click_vnc_canvas()
