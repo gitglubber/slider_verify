@@ -845,28 +845,40 @@ class VMAutomation:
                 if verification:
                     description = verification.get('description', '').upper()
 
-                    # Only fail if AI explicitly says there's RED error text or shows actual error output
-                    # Be VERY specific - only present-tense active errors, not descriptions of what happened
-                    error_indicators = [
-                        'RED TEXT',
-                        'RED ERROR',
-                        'ERROR TEXT IN RED',
-                        'ERROR MESSAGE IS DISPLAYED',
-                        'ERROR MESSAGE IS VISIBLE',
-                        'DISPLAYS AN ERROR MESSAGE',
-                        'SHOWS AN ERROR MESSAGE',
-                        'ACCESS IS DENIED',
-                        'PERMISSION IS DENIED',
-                        'THE TERMINAL SHOWS THE ERROR OUTPUT'  # Very specific phrase
+                    # Check for negations first - if AI says "NO ERROR" or "NO RED", don't flag as error
+                    negation_phrases = [
+                        'NO RED',
+                        'NO ERROR',
+                        'NO ERRORS',
+                        'WITHOUT ERROR',
+                        'WITHOUT RED'
                     ]
 
-                    for indicator in error_indicators:
-                        if indicator in description:
-                            command_has_error = True
-                            logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
-                            logger.error(f"  Error indicator: '{indicator}'")
-                            logger.error(f"  AI saw: {description[:300]}...")
-                            break
+                    has_negation = any(neg in description for neg in negation_phrases)
+
+                    # Only fail if AI explicitly says there's RED error text or shows actual error output
+                    # AND there's no negation phrase
+                    if not has_negation:
+                        error_indicators = [
+                            'RED TEXT',
+                            'RED ERROR',
+                            'ERROR TEXT IN RED',
+                            'ERROR MESSAGE IS DISPLAYED',
+                            'ERROR MESSAGE IS VISIBLE',
+                            'DISPLAYS AN ERROR MESSAGE',
+                            'SHOWS AN ERROR MESSAGE',
+                            'ACCESS IS DENIED',
+                            'PERMISSION IS DENIED',
+                            'THE TERMINAL SHOWS THE ERROR OUTPUT'
+                        ]
+
+                        for indicator in error_indicators:
+                            if indicator in description:
+                                command_has_error = True
+                                logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
+                                logger.error(f"  Error indicator: '{indicator}'")
+                                logger.error(f"  AI saw: {description[:300]}...")
+                                break
 
                     if not command_has_error and verification.get("verified"):
                         logger.info(f"[OK] PowerShell command verified by AI - output visible")
@@ -1040,28 +1052,40 @@ class VMAutomation:
                 if verification:
                     description = verification.get('description', '').upper()
 
-                    # Only fail if AI explicitly says there's RED error text or shows actual error output
-                    # Be VERY specific - only present-tense active errors, not descriptions of what happened
-                    error_indicators = [
-                        'RED TEXT',
-                        'RED ERROR',
-                        'ERROR TEXT IN RED',
-                        'ERROR MESSAGE IS DISPLAYED',
-                        'ERROR MESSAGE IS VISIBLE',
-                        'DISPLAYS AN ERROR MESSAGE',
-                        'SHOWS AN ERROR MESSAGE',
-                        'ACCESS IS DENIED',
-                        'PERMISSION IS DENIED',
-                        'THE TERMINAL SHOWS THE ERROR OUTPUT'  # Very specific phrase
+                    # Check for negations first - if AI says "NO ERROR" or "NO RED", don't flag as error
+                    negation_phrases = [
+                        'NO RED',
+                        'NO ERROR',
+                        'NO ERRORS',
+                        'WITHOUT ERROR',
+                        'WITHOUT RED'
                     ]
 
-                    for indicator in error_indicators:
-                        if indicator in description:
-                            command_has_error = True
-                            logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
-                            logger.error(f"  Error indicator: '{indicator}'")
-                            logger.error(f"  AI saw: {description[:300]}...")
-                            break
+                    has_negation = any(neg in description for neg in negation_phrases)
+
+                    # Only fail if AI explicitly says there's RED error text or shows actual error output
+                    # AND there's no negation phrase
+                    if not has_negation:
+                        error_indicators = [
+                            'RED TEXT',
+                            'RED ERROR',
+                            'ERROR TEXT IN RED',
+                            'ERROR MESSAGE IS DISPLAYED',
+                            'ERROR MESSAGE IS VISIBLE',
+                            'DISPLAYS AN ERROR MESSAGE',
+                            'SHOWS AN ERROR MESSAGE',
+                            'ACCESS IS DENIED',
+                            'PERMISSION IS DENIED',
+                            'THE TERMINAL SHOWS THE ERROR OUTPUT'
+                        ]
+
+                        for indicator in error_indicators:
+                            if indicator in description:
+                                command_has_error = True
+                                logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
+                                logger.error(f"  Error indicator: '{indicator}'")
+                                logger.error(f"  AI saw: {description[:300]}...")
+                                break
 
                     if not command_has_error and verification.get("verified"):
                         logger.info(f"[OK] Interactive PowerShell command verified by AI - output visible")
