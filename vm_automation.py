@@ -813,10 +813,16 @@ class VMAutomation:
                 else:
                     logger.info("[INFO] No AI verification - continuing")
 
-                # Type the command in PowerShell
+                # Type the command in PowerShell character-by-character
+                # This ensures special characters like | are typed correctly through VNC
                 self._log_action(f"Execute command: {command}", f"Typing command in PowerShell")
                 logger.info(f"Typing command in PowerShell: {command}")
-                self.page.keyboard.type(command, delay=50)
+                for char in command:
+                    try:
+                        self._type_char_vnc(char)
+                        time.sleep(0.05)
+                    except Exception as e:
+                        logger.warning(f"Failed to type '{char}': {e}")
                 time.sleep(1)
 
                 # Press Enter to execute
@@ -827,22 +833,63 @@ class VMAutomation:
                 screenshot_path, verification = self._capture_screenshot(
                     f"10_powershell_command_executed_attempt{attempt}",
                     verify_state=f"Terminal window showing PowerShell output after executing '{command}'. "
-                                 f"The command and its results should be visible in the terminal. "
-                                 f"Note: This is PowerShell running inside cmd.exe, so NO blue background expected."
+                                 f"The command should show its output/results. "
+                                 f"Note: This is PowerShell running inside cmd.exe, so NO blue background expected. "
+                                 f"IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows "
+                                 f"actual error messages (like 'cannot be found', 'access denied', etc.). "
+                                 f"If you see normal command output (even if white/gray text), mark as VERIFIED."
                 )
 
-                # Check verification result (informational only - don't fail on AI uncertainty)
+                # Check verification result and detect errors
+                command_has_error = False
                 if verification:
-                    if verification.get("verified"):
-                        logger.info(f"[OK] PowerShell command verified by AI - output visible")
-                    else:
-                        logger.info(f"[INFO] AI could not verify output - command may have executed successfully")
-                        logger.info(f"  AI saw: {verification.get('description') or 'empty response'}")
-                else:
-                    logger.info("[INFO] No AI verification - command executed")
+                    description = verification.get('description', '').upper()
 
-                # Close terminal window and return success
-                # Only fail if there was an actual exception, not AI verification failure
+                    # Only fail if AI explicitly says there's RED error text or shows actual error output
+                    # Be VERY specific - only present-tense active errors, not descriptions of what happened
+                    error_indicators = [
+                        'RED TEXT',
+                        'RED ERROR',
+                        'ERROR TEXT IN RED',
+                        'ERROR MESSAGE IS DISPLAYED',
+                        'ERROR MESSAGE IS VISIBLE',
+                        'DISPLAYS AN ERROR MESSAGE',
+                        'SHOWS AN ERROR MESSAGE',
+                        'ACCESS IS DENIED',
+                        'PERMISSION IS DENIED',
+                        'THE TERMINAL SHOWS THE ERROR OUTPUT'  # Very specific phrase
+                    ]
+
+                    for indicator in error_indicators:
+                        if indicator in description:
+                            command_has_error = True
+                            logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
+                            logger.error(f"  Error indicator: '{indicator}'")
+                            logger.error(f"  AI saw: {description[:300]}...")
+                            break
+
+                    if not command_has_error and verification.get("verified"):
+                        logger.info(f"[OK] PowerShell command verified by AI - output visible")
+                    elif not command_has_error:
+                        logger.info(f"[OK] No errors detected in command output")
+                        logger.info(f"  AI saw: {description[:200]}...")
+                else:
+                    logger.info("[INFO] No AI verification - assuming command executed successfully")
+
+                # If error detected and we have retries left, retry
+                if command_has_error:
+                    if attempt < self.max_retries:
+                        logger.warning(f"Retrying due to detected error (attempt {attempt + 1}/{self.max_retries})")
+                        self.page.keyboard.press("Alt+F4")
+                        time.sleep(2)
+                        continue
+                    else:
+                        logger.error(f"PowerShell command failed after {self.max_retries} attempts")
+                        self.page.keyboard.press("Alt+F4")
+                        time.sleep(1)
+                        return False
+
+                # Success - close terminal window and return
                 time.sleep(2)
                 self.page.keyboard.press("Alt+F4")
                 time.sleep(1)
@@ -961,10 +1008,16 @@ class VMAutomation:
                 else:
                     logger.info("[INFO] No AI verification - continuing")
 
-                # Type the command in the PowerShell prompt
+                # Type the command in the PowerShell prompt character-by-character
+                # This ensures special characters like | are typed correctly through VNC
                 self._log_action(f"Execute command: {command}", f"Typing command in PowerShell")
                 logger.info(f"Typing command in PowerShell: {command}")
-                self.page.keyboard.type(command, delay=50)
+                for char in command:
+                    try:
+                        self._type_char_vnc(char)
+                        time.sleep(0.05)
+                    except Exception as e:
+                        logger.warning(f"Failed to type '{char}': {e}")
                 time.sleep(1)
 
                 # Press Enter to execute command
@@ -975,22 +1028,67 @@ class VMAutomation:
                 screenshot_path, verification = self._capture_screenshot(
                     f"10_powershell_interactive_output_attempt{attempt}",
                     verify_state=f"Terminal window showing PowerShell output after executing '{command}'. "
-                                 f"The command and its results should be visible in the terminal. "
-                                 f"Note: This is PowerShell running inside cmd.exe, so NO blue background expected."
+                                 f"The command should show its output/results. "
+                                 f"Note: This is PowerShell running inside cmd.exe, so NO blue background expected. "
+                                 f"IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows "
+                                 f"actual error messages (like 'cannot be found', 'access denied', etc.). "
+                                 f"If you see normal command output (even if white/gray text), mark as VERIFIED."
                 )
 
-                # Check verification result (informational only - don't fail on AI uncertainty)
+                # Check verification result and detect errors
+                command_has_error = False
                 if verification:
-                    if verification.get("verified"):
-                        logger.info(f"[OK] Interactive PowerShell command verified by AI - output visible")
-                    else:
-                        logger.info(f"[INFO] AI could not verify output - command may have executed successfully")
-                        logger.info(f"  AI saw: {verification.get('description') or 'empty response'}")
-                else:
-                    logger.info("[INFO] No AI verification - command executed")
+                    description = verification.get('description', '').upper()
 
-                # Close terminal window and return success
-                # Only fail if there was an actual exception, not AI verification failure
+                    # Only fail if AI explicitly says there's RED error text or shows actual error output
+                    # Be VERY specific - only present-tense active errors, not descriptions of what happened
+                    error_indicators = [
+                        'RED TEXT',
+                        'RED ERROR',
+                        'ERROR TEXT IN RED',
+                        'ERROR MESSAGE IS DISPLAYED',
+                        'ERROR MESSAGE IS VISIBLE',
+                        'DISPLAYS AN ERROR MESSAGE',
+                        'SHOWS AN ERROR MESSAGE',
+                        'ACCESS IS DENIED',
+                        'PERMISSION IS DENIED',
+                        'THE TERMINAL SHOWS THE ERROR OUTPUT'  # Very specific phrase
+                    ]
+
+                    for indicator in error_indicators:
+                        if indicator in description:
+                            command_has_error = True
+                            logger.error(f"[FAIL] PowerShell command error detected on attempt {attempt}")
+                            logger.error(f"  Error indicator: '{indicator}'")
+                            logger.error(f"  AI saw: {description[:300]}...")
+                            break
+
+                    if not command_has_error and verification.get("verified"):
+                        logger.info(f"[OK] Interactive PowerShell command verified by AI - output visible")
+                    elif not command_has_error:
+                        # No error detected, even if not explicitly verified - treat as success
+                        logger.info(f"[OK] No errors detected in command output")
+                        logger.info(f"  AI saw: {description[:200]}...")
+                else:
+                    logger.info("[INFO] No AI verification - assuming command executed successfully")
+
+                # If error detected and we have retries left, retry
+                if command_has_error:
+                    if attempt < self.max_retries:
+                        logger.warning(f"Retrying due to detected error (attempt {attempt + 1}/{self.max_retries})")
+                        # Close the terminal before retrying
+                        self.page.keyboard.press("Alt+F4")
+                        time.sleep(2)
+                        continue
+                    else:
+                        logger.error(f"PowerShell command failed after {self.max_retries} attempts")
+                        logger.error(f"Last error: Command produced error output")
+                        # Close terminal and return failure
+                        self.page.keyboard.press("Alt+F4")
+                        time.sleep(1)
+                        return False
+
+                # Success - close terminal window and return
                 time.sleep(2)
                 self.page.keyboard.press("Alt+F4")
                 time.sleep(1)

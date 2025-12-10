@@ -1248,3 +1248,717 @@ playwright._impl._errors.TargetClosedError: BrowserContext.close: Target page, c
 2025-12-09 20:59:19,540 - slide_client - INFO - Destroying VM: virt_jss93qqcbjxs
 2025-12-09 20:59:21,206 - slide_client - INFO - VM virt_jss93qqcbjxs destroyed successfully
 2025-12-09 20:59:21,206 - __main__ - INFO - VM destroyed successfully
+2025-12-10 06:29:56,441 - __main__ - INFO - Initializing Verification Orchestrator
+2025-12-10 06:29:56,628 - llm_client - INFO - Initialized LLM client with model: zai-org/GLM-4.6V:zai-org at https://router.huggingface.co/v1
+2025-12-10 06:29:56,629 - __main__ - INFO - Using username from command line: Teknologize
+2025-12-10 06:29:56,629 - __main__ - INFO - Using password from command line
+2025-12-10 06:29:56,629 - __main__ - INFO - ======================================================================
+2025-12-10 06:29:56,629 - __main__ - INFO - Starting VM Verification Workflow
+2025-12-10 06:29:56,629 - __main__ - INFO - ======================================================================
+2025-12-10 06:29:56,629 - __main__ - INFO - Step 1: Retrieving latest snapshot
+2025-12-10 06:29:57,161 - slide_client - INFO - Found latest snapshot: s_5eb0gveglrzn from 2025-12-10T14:00:00.002068Z
+2025-12-10 06:29:57,161 - __main__ - INFO - Using snapshot: s_5eb0gveglrzn from 2025-12-10T14:01:00.017303Z
+2025-12-10 06:29:57,270 - __main__ - INFO - Agent: TEK-DC02 (windows)
+2025-12-10 06:29:57,270 - __main__ - INFO - Step 2: Creating VM from snapshot
+2025-12-10 06:29:57,270 - __main__ - INFO - Using cloud device: d_kyarqbvwo8cx
+2025-12-10 06:29:57,271 - slide_client - INFO - Creating VM from snapshot s_5eb0gveglrzn with network=network-none
+2025-12-10 06:30:14,354 - slide_client - INFO - VM created successfully: virt_7bw7x41w6219
+2025-12-10 06:30:14,355 - __main__ - INFO - VM created: virt_7bw7x41w6219
+2025-12-10 06:30:14,355 - __main__ - INFO - Waiting for VM to be ready (starts automatically)...
+2025-12-10 06:30:14,355 - slide_client - INFO - Waiting for VM virt_7bw7x41w6219 to be ready (timeout: 300s)
+2025-12-10 06:30:14,455 - slide_client - INFO - VM virt_7bw7x41w6219 is ready
+2025-12-10 06:30:14,555 - __main__ - INFO - VM state: running
+2025-12-10 06:30:14,555 - __main__ - INFO - Step 3: Retrieving noVNC access URL
+2025-12-10 06:30:14,657 - slide_client - INFO - Constructed VNC URL for VM virt_7bw7x41w6219: https://slide.recipes/mcpTools/vncViewer.php?id=virt_7bw7x41w6219&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_7bw7x41w6219&password=bjyl_mx7=
+2025-12-10 06:30:14,657 - __main__ - INFO - noVNC URL obtained: https://slide.recipes/mcpTools/vncViewer.php?id=vi...
+2025-12-10 06:30:14,657 - __main__ - INFO - Step 4: Performing automated verification
+2025-12-10 06:30:14,657 - vm_automation - INFO - Starting Playwright browser
+2025-12-10 06:30:19,706 - vm_automation - INFO - Browser started successfully
+2025-12-10 06:30:19,706 - __main__ - INFO - Connecting to VM via noVNC
+2025-12-10 06:30:19,707 - vm_automation - INFO - Connecting to VM via noVNC: https://slide.recipes/mcpTools/vncViewer.php?id=virt_7bw7x41w6219&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_7bw7x41w6219&password=bjyl_mx7=
+2025-12-10 06:30:20,959 - vm_automation - INFO - Waiting for noVNC to connect...
+2025-12-10 06:30:31,098 - vm_automation - INFO - Successfully connected to VM via noVNC
+2025-12-10 06:30:31,099 - __main__ - INFO - Waiting for Windows desktop
+2025-12-10 06:30:31,099 - vm_automation - INFO - Waiting for Windows desktop to be ready
+2025-12-10 06:30:31,099 - vm_automation - INFO - Waiting 120 seconds for Windows to boot...
+2025-12-10 06:32:31,234 - vm_automation - INFO - Windows desktop should be ready
+2025-12-10 06:32:31,234 - __main__ - INFO - Logging into Windows
+2025-12-10 06:32:31,234 - vm_automation - INFO - Logging into Windows as Teknologize
+2025-12-10 06:32:31,234 - vm_automation - INFO - Waiting for Windows login screen to appear...
+2025-12-10 06:32:31,234 - vm_automation - INFO - Checking for login screen (attempt 1/60)...
+2025-12-10 06:32:36,427 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:32:49,384 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:32:49,388 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:32:49,389 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:32:49,389 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING COMPUTER SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS CONNECTION (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP OF THE SCREEN.<|END_OF_BOX|>
+2025-12-10 06:32:49,389 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING COMPUTER SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS CONNECTION (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP OF THE SCREEN.<|END_OF_BOX|>
+2025-12-10 06:32:59,387 - vm_automation - INFO - Checking for login screen (attempt 2/60)...
+2025-12-10 06:32:59,514 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:05,057 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:33:05,058 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:33:05,058 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:05,058 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PHASE, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS TOOL (EVIDENCED BY THE "CTRL+ALT+DEL" BUTTON AND "CONNECTED" STATUS), BUT THE ACTUAL LOGIN CREDENTIALS FIELDS ARE NOT VISIBLE.<|END_OF_BOX|>
+2025-12-10 06:33:05,059 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PHASE, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS TOOL (EVIDENCED BY THE "CTRL+ALT+DEL" BUTTON AND "CONNECTED" STATUS), BUT THE ACTUAL LOGIN CREDENTIALS FIELDS ARE NOT VISIBLE.<|END_OF_BOX|>
+2025-12-10 06:33:15,057 - vm_automation - INFO - Checking for login screen (attempt 3/60)...
+2025-12-10 06:33:20,199 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:26,113 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:33:26,113 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:33:26,113 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:26,114 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS IN A CONFIGURATION OR STARTUP PROCESS, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS CONNECTION AS EVIDENCED BY THE DARK BORDER AND "CONNECTED" STATUS IN THE TOP RIGHT.<|END_OF_BOX|>
+2025-12-10 06:33:26,114 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS IN A CONFIGURATION OR STARTUP PROCESS, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS CONNECTION AS EVIDENCED BY THE DARK BORDER AND "CONNECTED" STATUS IN THE TOP RIGHT.<|END_OF_BOX|>
+2025-12-10 06:33:36,112 - vm_automation - INFO - Checking for login screen (attempt 4/60)...
+2025-12-10 06:33:36,226 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:45,778 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:33:45,779 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:33:45,779 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:33:45,779 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" AND A LOADING SPINNER IN THE CENTER. THIS IS A SYSTEM CONFIGURATION SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP, BUT NO LOGIN CREDENTIALS FIELDS ARE VISIBLE.<|END_OF_BOX|>
+2025-12-10 06:33:45,779 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" AND A LOADING SPINNER IN THE CENTER. THIS IS A SYSTEM CONFIGURATION SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP, BUT NO LOGIN CREDENTIALS FIELDS ARE VISIBLE.<|END_OF_BOX|>
+2025-12-10 06:33:55,778 - vm_automation - INFO - Checking for login screen (attempt 5/60)...
+2025-12-10 06:33:55,900 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:02,865 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:34:02,866 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:34:02,866 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:02,866 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN. THE INTERFACE APPEARS TO BE ACCESSED THROUGH A REMOTE CONNECTION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP RIGHT.<|END_OF_BOX|>
+2025-12-10 06:34:02,866 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN. THE INTERFACE APPEARS TO BE ACCESSED THROUGH A REMOTE CONNECTION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP RIGHT.<|END_OF_BOX|>
+2025-12-10 06:34:12,865 - vm_automation - INFO - Checking for login screen (attempt 6/60)...
+2025-12-10 06:34:18,033 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:23,100 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:34:23,100 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:34:23,101 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:23,101 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM SETTINGS APPLICATION PROCESS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH A REMOTE CONNECTION AS INDICATED BY THE "CTRL+ALT+DEL" BUTTON AND "CONNECTED" STATUS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 06:34:23,101 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM SETTINGS APPLICATION PROCESS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH A REMOTE CONNECTION AS INDICATED BY THE "CTRL+ALT+DEL" BUTTON AND "CONNECTED" STATUS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 06:34:33,099 - vm_automation - INFO - Checking for login screen (attempt 7/60)...
+2025-12-10 06:34:33,211 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:42,892 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:34:42,893 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:34:42,893 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:34:42,893 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH WHITE TEXT "APPLYING COMPUTER SETTINGS" AND A LOADING ANIMATION (THREE DOTS), INDICATING A SYSTEM PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE REMOTE ACCESS INTERFACE IS VISIBLE AROUND THE EDGES WITH "CONNECTED" STATUS AND CONTROL BUTTONS.<|END_OF_BOX|>
+2025-12-10 06:34:42,893 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH WHITE TEXT "APPLYING COMPUTER SETTINGS" AND A LOADING ANIMATION (THREE DOTS), INDICATING A SYSTEM PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE REMOTE ACCESS INTERFACE IS VISIBLE AROUND THE EDGES WITH "CONNECTED" STATUS AND CONTROL BUTTONS.<|END_OF_BOX|>
+2025-12-10 06:34:52,892 - vm_automation - INFO - Checking for login screen (attempt 8/60)...
+2025-12-10 06:34:53,027 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:35:20,529 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:35:20,529 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:35:20,529 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:35:20,530 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" DISPLAYED IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM CONFIGURATION OR SETUP PROCESS THAT'S CURRENTLY RUNNING. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 06:35:20,530 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" DISPLAYED IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM CONFIGURATION OR SETUP PROCESS THAT'S CURRENTLY RUNNING. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 06:35:30,528 - vm_automation - INFO - Checking for login screen (attempt 9/60)...
+2025-12-10 06:35:35,707 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:35:42,263 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:35:42,263 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 06:35:42,264 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:35:42,264 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM CONFIGURATION OR STARTUP PROCESS SCREEN. THE VNC/NOVNC INTERFACE IS VISIBLE AT THE TOP WITH "CONNECTED" STATUS AND A "CTRL+ALT+DEL" BUTTON, CONFIRMING REMOTE ACCESS.<|END_OF_BOX|>
+2025-12-10 06:35:42,264 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM CONFIGURATION OR STARTUP PROCESS SCREEN. THE VNC/NOVNC INTERFACE IS VISIBLE AT THE TOP WITH "CONNECTED" STATUS AND A "CTRL+ALT+DEL" BUTTON, CONFIRMING REMOTE ACCESS.<|END_OF_BOX|>
+2025-12-10 06:35:52,263 - vm_automation - INFO - Checking for login screen (attempt 10/60)...
+2025-12-10 06:35:52,610 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 06:36:19,407 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:36:19,408 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [OK] (high confidence)
+2025-12-10 06:36:19,408 - vm_automation - INFO - [OK] Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. (high confidence)
+2025-12-10 06:36:19,408 - vm_automation - INFO - [OK] Login screen is ready! (high confidence)
+2025-12-10 06:36:19,408 - vm_automation - INFO -   AI saw: WINDOWS LOGIN SCREEN SHOWING THE USERNAME "TEKNOLOGIZE\TEKNOLOGIZE" AND A PASSWORD FIELD, VIEWED THROUGH VNC/NOVNC REMOTE ACCESS WITH CONNECTION CONTROLS VISIBLE AT THE TOP. THE INTERFACE DISPLAYS A USER ICON, PASSWORD INPUT FIELD, AND "OTHER USER" OPTION, WITH A SCENIC BEACH/CAVE BACKGROUND TYPICAL OF WINDOWS 10 LOGIN SCREENS.<|END_OF_BOX|>
+2025-12-10 06:36:19,408 - vm_automation - INFO - Login screen confirmed ready - detecting which fields are visible...
+2025-12-10 06:36:28,752 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:36:28,753 - llm_client - INFO - Login fields detected: username=False, password=True
+2025-12-10 06:36:28,753 - llm_client - INFO -   Detection reasoning: The login screen shows a pre-selected user (TEKNOLOGIZE\teknologize) with a blue highlight at the bottom left. The username is displayed but not editable. There is an empty, editable password input field labeled "Password" in the center of the screen. An "Other user" option is also visible below the selected user.<|end_of_box|>
+2025-12-10 06:36:28,753 - vm_automation - INFO - AI detected fields: The login screen shows a pre-selected user (TEKNOLOGIZE\teknologize) with a blue highlight at the bottom left. The username is displayed but not editable. There is an empty, editable password input field labeled "Password" in the center of the screen. An "Other user" option is also visible below the selected user.<|end_of_box|>
+2025-12-10 06:36:28,753 - vm_automation - INFO - Displayed username on screen: TEKNOLOGIZE\teknologize
+2025-12-10 06:36:28,753 - vm_automation - INFO - [OK] Cached username matches expected: Teknologize
+2025-12-10 06:36:28,753 - vm_automation - INFO - Will use cached user with password-only login
+2025-12-10 06:36:29,797 - vm_automation - INFO - Only password field detected - skipping username entry
+2025-12-10 06:36:29,798 - vm_automation - INFO - Ensuring password field has focus...
+2025-12-10 06:36:30,856 - vm_automation - INFO - Clicking directly on password field at VNC coords (960, 560)
+2025-12-10 06:36:31,878 - vm_automation - INFO - Clearing password field...
+2025-12-10 06:36:32,685 - vm_automation - INFO - Typing password...
+2025-12-10 06:36:40,208 - vm_automation - INFO - Pressing Enter to login...
+2025-12-10 06:36:40,212 - vm_automation - INFO - Waiting 15 seconds for Windows desktop to load...
+2025-12-10 06:36:55,210 - vm_automation - INFO - Verifying login was successful...
+2025-12-10 06:36:55,504 - vm_automation - INFO - Verifying UI state: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen.
+2025-12-10 06:37:04,543 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:37:04,544 - llm_client - INFO - UI Verification: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. = [OK] (high confidence)
+2025-12-10 06:37:04,544 - vm_automation - INFO - [OK] Verified: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. (high confidence)
+2025-12-10 06:37:04,545 - vm_automation - INFO - [OK] Login verified - Windows desktop visible
+2025-12-10 06:37:04,545 - vm_automation - INFO - Disabling screen lock timeout...
+2025-12-10 06:37:19,698 - vm_automation - INFO - [OK] Screen lock timeout disabled
+2025-12-10 06:37:19,896 - vm_automation - INFO - [OK] Login complete and verified
+2025-12-10 06:37:19,897 - __main__ - INFO - [OK] Login successful!
+2025-12-10 06:37:19,897 - __main__ - INFO - Running PowerShell command 1/2: Get-Service | fl
+2025-12-10 06:37:19,897 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-Service | fl
+2025-12-10 06:37:20,946 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 06:37:24,138 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 06:37:34,083 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:37:34,095 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 06:37:34,096 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 06:37:34,096 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 06:37:34,096 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 06:37:36,038 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 06:37:36,043 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 06:37:56,198 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 06:37:58,747 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 06:38:08,927 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 06:38:26,380 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:38:26,381 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 06:38:26,381 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 06:38:26,381 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 06:38:26,381 - vm_automation - INFO - Typing command in PowerShell: Get-Service | fl
+2025-12-10 06:38:32,553 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected.
+2025-12-10 06:38:50,700 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:38:50,701 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. = [FAIL] (high confidence)
+2025-12-10 06:38:50,701 - vm_automation - WARNING - [FAIL] NOT Verified: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected.
+2025-12-10 06:38:50,701 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A POWERSHELL WINDOW RUNNING INSIDE CMD.EXE WITH A BLACK BACKGROUND. THE COMMAND "GET-SERVICE \ FL" WAS EXECUTED (WITH A BACKSLASH INSTEAD OF A PIPE), WHICH RESULTED IN AN ERROR MESSAGE "A POSITIONAL PARAMETER CANNOT BE FOUND THAT ACCEPTS ARGUMENT 'FL'." THE CORRECT COMMAND SHOULD HAVE BEEN "GET-SERVICE | FL" WITH A PIPE SYMBOL, NOT A BACKSLASH. THE TERMINAL SHOWS THE ERROR OUTPUT RATHER THAN THE EXPECTED SERVICE INFORMATION.<|END_OF_BOX|>
+2025-12-10 06:38:50,701 - vm_automation - INFO - [INFO] AI could not verify output - command may have executed successfully
+2025-12-10 06:38:50,701 - vm_automation - INFO -   AI saw: THE SCREENSHOT SHOWS A POWERSHELL WINDOW RUNNING INSIDE CMD.EXE WITH A BLACK BACKGROUND. THE COMMAND "GET-SERVICE \ FL" WAS EXECUTED (WITH A BACKSLASH INSTEAD OF A PIPE), WHICH RESULTED IN AN ERROR MESSAGE "A POSITIONAL PARAMETER CANNOT BE FOUND THAT ACCEPTS ARGUMENT 'FL'." THE CORRECT COMMAND SHOULD HAVE BEEN "GET-SERVICE | FL" WITH A PIPE SYMBOL, NOT A BACKSLASH. THE TERMINAL SHOWS THE ERROR OUTPUT RATHER THAN THE EXPECTED SERVICE INFORMATION.<|END_OF_BOX|>
+2025-12-10 06:38:53,705 - vm_automation - INFO - Interactive PowerShell command completed successfully
+2025-12-10 06:38:53,705 - __main__ - INFO - Running PowerShell command 2/2: Get-uptime
+2025-12-10 06:38:53,705 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-uptime
+2025-12-10 06:38:54,745 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 06:38:57,920 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 06:39:06,204 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:39:06,204 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 06:39:06,205 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 06:39:06,205 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 06:39:06,205 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 06:39:08,146 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 06:39:08,148 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 06:39:28,308 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 06:39:30,842 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 06:39:41,001 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 06:39:48,200 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:39:48,200 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 06:39:48,201 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 06:39:48,201 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 06:39:48,201 - vm_automation - INFO - Typing command in PowerShell: Get-uptime
+2025-12-10 06:39:54,004 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected.
+2025-12-10 06:40:05,969 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:40:05,969 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. = [OK] (high confidence)
+2025-12-10 06:40:05,970 - vm_automation - INFO - [OK] Verified: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. (high confidence)
+2025-12-10 06:40:05,970 - vm_automation - INFO - [OK] Interactive PowerShell command verified by AI - output visible
+2025-12-10 06:40:08,973 - vm_automation - INFO - Interactive PowerShell command completed successfully
+2025-12-10 06:40:08,974 - __main__ - INFO - Filtered screenshots: 24 total -> 12 included in report
+2025-12-10 06:40:08,974 - __main__ - INFO - Verification complete: 5 steps, 12 screenshots
+2025-12-10 06:40:08,974 - vm_automation - INFO - Closing browser
+2025-12-10 06:40:09,114 - vm_automation - INFO - Browser closed
+2025-12-10 06:40:09,115 - __main__ - INFO - Step 5: Generating verification report
+2025-12-10 06:40:09,115 - __main__ - INFO - Generating BCDR test summary
+2025-12-10 06:40:26,210 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 06:40:26,212 - report_generator - INFO - JSON report saved: reports\verification_report_20251210_064026.json
+2025-12-10 06:40:26,330 - report_generator - INFO - HTML report saved: reports\verification_report_20251210_064026.html
+2025-12-10 06:40:26,331 - report_generator - INFO - Reports generated: JSON=reports\verification_report_20251210_064026.json, HTML=reports\verification_report_20251210_064026.html
+2025-12-10 06:40:26,331 - __main__ - INFO - ======================================================================
+2025-12-10 06:40:26,332 - __main__ - INFO - Verification Completed Successfully
+2025-12-10 06:40:26,332 - __main__ - INFO - HTML Report: reports\verification_report_20251210_064026.html
+2025-12-10 06:40:26,332 - __main__ - INFO - JSON Report: reports\verification_report_20251210_064026.json
+2025-12-10 06:40:26,332 - __main__ - INFO - ======================================================================
+2025-12-10 06:40:26,332 - __main__ - INFO - Step 6: Cleaning up - Destroying VM
+2025-12-10 06:40:26,332 - __main__ - INFO - Destroying VM: virt_7bw7x41w6219
+2025-12-10 06:40:26,332 - slide_client - INFO - Destroying VM: virt_7bw7x41w6219
+2025-12-10 06:40:28,045 - slide_client - INFO - VM virt_7bw7x41w6219 destroyed successfully
+2025-12-10 06:40:28,045 - __main__ - INFO - VM destroyed successfully
+2025-12-10 07:06:07,749 - __main__ - INFO - Initializing Verification Orchestrator
+2025-12-10 07:06:07,945 - llm_client - INFO - Initialized LLM client with model: zai-org/GLM-4.6V:zai-org at https://router.huggingface.co/v1
+2025-12-10 07:06:07,946 - __main__ - INFO - Using username from command line: Teknologize
+2025-12-10 07:06:07,946 - __main__ - INFO - Using password from command line
+2025-12-10 07:06:07,946 - __main__ - INFO - ======================================================================
+2025-12-10 07:06:07,946 - __main__ - INFO - Starting VM Verification Workflow
+2025-12-10 07:06:07,946 - __main__ - INFO - ======================================================================
+2025-12-10 07:06:07,946 - __main__ - INFO - Step 1: Retrieving latest snapshot
+2025-12-10 07:06:08,628 - slide_client - INFO - Found latest snapshot: s_sjka0xioeg3t from 2025-12-10T15:00:00.00138Z
+2025-12-10 07:06:08,628 - __main__ - INFO - Using snapshot: s_sjka0xioeg3t from 2025-12-10T15:00:59.949761Z
+2025-12-10 07:06:08,725 - __main__ - INFO - Agent: TEK-DC02 (windows)
+2025-12-10 07:06:08,725 - __main__ - INFO - Step 2: Creating VM from snapshot
+2025-12-10 07:06:08,725 - __main__ - INFO - Using local device: d_3mlfn75e9xn3
+2025-12-10 07:06:08,725 - slide_client - INFO - Creating VM from snapshot s_sjka0xioeg3t with network=network-none
+2025-12-10 07:06:20,220 - slide_client - INFO - VM created successfully: virt_pw5kfwmcixpj
+2025-12-10 07:06:20,221 - __main__ - INFO - VM created: virt_pw5kfwmcixpj
+2025-12-10 07:06:20,221 - __main__ - INFO - Waiting for VM to be ready (starts automatically)...
+2025-12-10 07:06:20,221 - slide_client - INFO - Waiting for VM virt_pw5kfwmcixpj to be ready (timeout: 300s)
+2025-12-10 07:06:20,326 - slide_client - INFO - VM virt_pw5kfwmcixpj is ready
+2025-12-10 07:06:20,426 - __main__ - INFO - VM state: running
+2025-12-10 07:06:20,426 - __main__ - INFO - Step 3: Retrieving noVNC access URL
+2025-12-10 07:06:20,522 - slide_client - INFO - Constructed VNC URL for VM virt_pw5kfwmcixpj: https://slide.recipes/mcpTools/vncViewer.php?id=virt_pw5kfwmcixpj&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_pw5kfwmcixpj&password=W9wzI!1r=
+2025-12-10 07:06:20,523 - __main__ - INFO - noVNC URL obtained: https://slide.recipes/mcpTools/vncViewer.php?id=vi...
+2025-12-10 07:06:20,523 - __main__ - INFO - Step 4: Performing automated verification
+2025-12-10 07:06:20,523 - vm_automation - INFO - Starting Playwright browser
+2025-12-10 07:06:25,156 - vm_automation - INFO - Browser started successfully
+2025-12-10 07:06:25,156 - __main__ - INFO - Connecting to VM via noVNC
+2025-12-10 07:06:25,156 - vm_automation - INFO - Connecting to VM via noVNC: https://slide.recipes/mcpTools/vncViewer.php?id=virt_pw5kfwmcixpj&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_pw5kfwmcixpj&password=W9wzI!1r=
+2025-12-10 07:06:26,479 - vm_automation - INFO - Waiting for noVNC to connect...
+2025-12-10 07:06:36,643 - vm_automation - INFO - Successfully connected to VM via noVNC
+2025-12-10 07:06:36,643 - __main__ - INFO - Waiting for Windows desktop
+2025-12-10 07:06:36,643 - vm_automation - INFO - Waiting for Windows desktop to be ready
+2025-12-10 07:06:36,643 - vm_automation - INFO - Waiting 120 seconds for Windows to boot...
+2025-12-10 07:08:36,766 - vm_automation - INFO - Windows desktop should be ready
+2025-12-10 07:08:36,767 - __main__ - INFO - Logging into Windows
+2025-12-10 07:08:36,767 - vm_automation - INFO - Logging into Windows as Teknologize
+2025-12-10 07:08:36,767 - vm_automation - INFO - Waiting for Windows login screen to appear...
+2025-12-10 07:08:36,767 - vm_automation - INFO - Checking for login screen (attempt 1/60)...
+2025-12-10 07:08:41,949 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:08:50,737 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:08:50,742 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:08:50,742 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:08:50,742 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING COMPUTER SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS TOOL (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:08:50,742 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING COMPUTER SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS TOOL (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:09:00,741 - vm_automation - INFO - Checking for login screen (attempt 2/60)...
+2025-12-10 07:09:00,857 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:07,656 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:09:07,661 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:09:07,661 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:07,661 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS". THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PROCESS. THE INTERFACE INDICATES THIS IS BEING VIEWED THROUGH A REMOTE ACCESS CONNECTION (SHOWN BY "CONNECTED" STATUS AND CTRL+ALT+DEL BUTTON).<|END_OF_BOX|>
+2025-12-10 07:09:07,661 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS". THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PROCESS. THE INTERFACE INDICATES THIS IS BEING VIEWED THROUGH A REMOTE ACCESS CONNECTION (SHOWN BY "CONNECTED" STATUS AND CTRL+ALT+DEL BUTTON).<|END_OF_BOX|>
+2025-12-10 07:09:17,661 - vm_automation - INFO - Checking for login screen (attempt 3/60)...
+2025-12-10 07:09:22,829 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:30,419 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:09:30,420 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:09:30,420 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:30,420 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS SESSION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:09:30,420 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS SESSION AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:09:40,420 - vm_automation - INFO - Checking for login screen (attempt 4/60)...
+2025-12-10 07:09:40,536 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:50,134 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:09:50,135 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:09:50,135 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:09:50,136 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, BUT NO LOGIN CREDENTIALS FIELDS ARE VISIBLE. THIS APPEARS TO BE A SYSTEM PROCESSING STATE RATHER THAN A LOGIN SCREEN.<|END_OF_BOX|>
+2025-12-10 07:09:50,136 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, BUT NO LOGIN CREDENTIALS FIELDS ARE VISIBLE. THIS APPEARS TO BE A SYSTEM PROCESSING STATE RATHER THAN A LOGIN SCREEN.<|END_OF_BOX|>
+2025-12-10 07:10:00,136 - vm_automation - INFO - Checking for login screen (attempt 5/60)...
+2025-12-10 07:10:00,259 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:06,255 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:10:06,258 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:10:06,258 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:06,258 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS TOOL (VNC/NOVNC) AS INDICATED BY THE DARK BORDER AND CONTROL BUTTONS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:10:06,258 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM PROCESS SCREEN WHERE WINDOWS IS APPLYING SETTINGS. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS TOOL (VNC/NOVNC) AS INDICATED BY THE DARK BORDER AND CONTROL BUTTONS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:10:16,257 - vm_automation - INFO - Checking for login screen (attempt 6/60)...
+2025-12-10 07:10:21,411 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:29,667 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:10:29,668 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:10:29,668 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:29,668 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THIS APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS INTERFACE (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:10:29,668 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THIS APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS INTERFACE (VNC/NOVNC) AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:10:39,668 - vm_automation - INFO - Checking for login screen (attempt 7/60)...
+2025-12-10 07:10:39,785 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:45,923 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:10:45,923 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:10:45,924 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:10:45,924 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME/PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM PROCESS OR BOOT SEQUENCE. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION AS EVIDENCED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:10:45,924 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME/PASSWORD FIELDS, BUT RATHER APPEARS TO BE A SYSTEM PROCESS OR BOOT SEQUENCE. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION AS EVIDENCED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 07:10:55,924 - vm_automation - INFO - Checking for login screen (attempt 8/60)...
+2025-12-10 07:10:56,030 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:11:02,536 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:11:02,538 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 07:11:02,538 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:11:02,538 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM IN A LOADING STATE WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM CONFIGURATION OR BOOT PROCESS SCREEN. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS SESSION (VNC/NOVNC) AS INDICATED BY THE DARK BORDER AND "CONNECTED" STATUS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:11:02,538 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM IN A LOADING STATE WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS, BUT RATHER A SYSTEM CONFIGURATION OR BOOT PROCESS SCREEN. THE INTERFACE APPEARS TO BE VIEWED THROUGH A REMOTE ACCESS SESSION (VNC/NOVNC) AS INDICATED BY THE DARK BORDER AND "CONNECTED" STATUS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 07:11:12,538 - vm_automation - INFO - Checking for login screen (attempt 9/60)...
+2025-12-10 07:11:17,921 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 07:11:31,350 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:11:31,351 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [OK] (high confidence)
+2025-12-10 07:11:31,351 - vm_automation - INFO - [OK] Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. (high confidence)
+2025-12-10 07:11:31,351 - vm_automation - INFO - [OK] Login screen is ready! (high confidence)
+2025-12-10 07:11:31,351 - vm_automation - INFO -   AI saw: WINDOWS LOGIN SCREEN SHOWING THE USERNAME "TEKNOLOGIZE\TEKNOLOGIZE" AND A PASSWORD FIELD, VIEWED THROUGH NOVNC REMOTE ACCESS WITH A BEACH/CAVE BACKGROUND IMAGE. THE INTERFACE DISPLAYS THE TYPICAL WINDOWS LOGIN ELEMENTS INCLUDING USER AVATAR, PASSWORD INPUT FIELD, AND "OTHER USER" OPTION.<|END_OF_BOX|>
+2025-12-10 07:11:31,351 - vm_automation - INFO - Login screen confirmed ready - detecting which fields are visible...
+2025-12-10 07:11:44,545 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:11:44,546 - llm_client - INFO - Login fields detected: username=False, password=True
+2025-12-10 07:11:44,546 - llm_client - INFO -   Detection reasoning: The login screen shows a pre-filled username "TEKNOLOGIZE\teknologize" (displayed in the center and a blue user tile at the bottom) with an empty, editable password field labeled "Password" below it. The username is not an editable input field—only the password field requires user input.<|end_of_box|>
+2025-12-10 07:11:44,546 - vm_automation - INFO - AI detected fields: The login screen shows a pre-filled username "TEKNOLOGIZE\teknologize" (displayed in the center and a blue user tile at the bottom) with an empty, editable password field labeled "Password" below it. The username is not an editable input field—only the password field requires user input.<|end_of_box|>
+2025-12-10 07:11:44,546 - vm_automation - INFO - Displayed username on screen: TEKNOLOGIZE\teknologize
+2025-12-10 07:11:44,546 - vm_automation - INFO - [OK] Cached username matches expected: Teknologize
+2025-12-10 07:11:44,546 - vm_automation - INFO - Will use cached user with password-only login
+2025-12-10 07:11:45,573 - vm_automation - INFO - Only password field detected - skipping username entry
+2025-12-10 07:11:45,573 - vm_automation - INFO - Ensuring password field has focus...
+2025-12-10 07:11:46,634 - vm_automation - INFO - Clicking directly on password field at VNC coords (960, 560)
+2025-12-10 07:11:47,654 - vm_automation - INFO - Clearing password field...
+2025-12-10 07:11:48,463 - vm_automation - INFO - Typing password...
+2025-12-10 07:11:55,970 - vm_automation - INFO - Pressing Enter to login...
+2025-12-10 07:11:55,973 - vm_automation - INFO - Waiting 15 seconds for Windows desktop to load...
+2025-12-10 07:12:10,972 - vm_automation - INFO - Verifying login was successful...
+2025-12-10 07:12:11,257 - vm_automation - INFO - Verifying UI state: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen.
+2025-12-10 07:12:30,486 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:12:30,487 - llm_client - INFO - UI Verification: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. = [OK] (high confidence)
+2025-12-10 07:12:30,487 - vm_automation - INFO - [OK] Verified: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. (high confidence)
+2025-12-10 07:12:30,487 - vm_automation - INFO - [OK] Login verified - Windows desktop visible
+2025-12-10 07:12:30,487 - vm_automation - INFO - Disabling screen lock timeout...
+2025-12-10 07:12:45,658 - vm_automation - INFO - [OK] Screen lock timeout disabled
+2025-12-10 07:12:45,861 - vm_automation - INFO - [OK] Login complete and verified
+2025-12-10 07:12:45,862 - __main__ - INFO - [OK] Login successful!
+2025-12-10 07:12:45,862 - __main__ - INFO - Running PowerShell command 1/2: Get-Service | fl
+2025-12-10 07:12:45,862 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-Service | fl
+2025-12-10 07:12:46,911 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 07:12:50,102 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 07:13:00,106 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:13:00,107 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 07:13:00,107 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 07:13:00,107 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 07:13:00,107 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 07:13:02,072 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 07:13:02,075 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 07:13:22,233 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 07:13:24,774 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 07:13:34,952 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 07:13:55,776 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:13:55,776 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 07:13:55,776 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 07:13:55,776 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 07:13:55,777 - vm_automation - INFO - Typing command in PowerShell: Get-Service | fl
+2025-12-10 07:14:03,036 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:14:31,014 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:14:31,015 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. = [OK] (high confidence)
+2025-12-10 07:14:31,015 - vm_automation - INFO - [OK] Verified: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. (high confidence)
+2025-12-10 07:14:31,015 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 1
+2025-12-10 07:14:31,016 - vm_automation - ERROR -   Error indicator: 'ERROR MESSAGE'
+2025-12-10 07:14:31,016 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A TERMINAL WINDOW WITH POWERSHELL RUNNING INSIDE CMD.EXE (BLACK BACKGROUND, NOT BLUE). THE OUTPUT DISPLAYS DETAILED INFORMATION ABOUT WINDOWS SERVICES INCLUDING THEIR NAME, DISPLA...
+2025-12-10 07:14:31,016 - vm_automation - WARNING - Retrying due to detected error (attempt 2/2)
+2025-12-10 07:14:33,031 - vm_automation - INFO - Retrying interactive PowerShell (attempt 2/2)...
+2025-12-10 07:14:34,062 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 07:14:37,246 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 07:14:47,084 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:14:47,084 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 07:14:47,084 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 07:14:47,085 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 07:14:47,085 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 07:14:49,028 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 07:14:49,030 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 07:15:09,197 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 07:15:11,732 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 07:15:21,921 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 07:15:33,365 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:15:33,366 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 07:15:33,366 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 07:15:33,366 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 07:15:33,366 - vm_automation - INFO - Typing command in PowerShell: Get-Service | fl
+2025-12-10 07:15:40,615 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:15:50,471 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:15:50,472 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. = [OK] (high confidence)
+2025-12-10 07:15:50,472 - vm_automation - INFO - [OK] Verified: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. (high confidence)
+2025-12-10 07:15:50,473 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 2
+2025-12-10 07:15:50,473 - vm_automation - ERROR -   Error indicator: 'ERROR MESSAGE'
+2025-12-10 07:15:50,473 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A TERMINAL WINDOW WITH POWERSHELL RUNNING INSIDE CMD.EXE (AS INDICATED BY THE TITLE "C:\WINDOWS\SYSTEM32\CMD.EXE - POWERSHELL.EXE"). THE WINDOW DISPLAYS THE OUTPUT OF "GET-SERVICE...
+2025-12-10 07:15:50,473 - vm_automation - ERROR - PowerShell command failed after 2 attempts
+2025-12-10 07:15:50,473 - vm_automation - ERROR - Last error: Command produced error output
+2025-12-10 07:15:51,484 - __main__ - INFO - Running PowerShell command 2/2: Get-uptime
+2025-12-10 07:15:51,485 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-uptime
+2025-12-10 07:15:52,527 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 07:15:55,701 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 07:16:03,170 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:16:03,171 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 07:16:03,171 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 07:16:03,171 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 07:16:03,171 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 07:16:05,115 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 07:16:05,118 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 07:16:25,289 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 07:16:27,819 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 07:16:38,002 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 07:16:46,407 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:16:46,409 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 07:16:46,409 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 07:16:46,409 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 07:16:46,409 - vm_automation - INFO - Typing command in PowerShell: Get-uptime
+2025-12-10 07:16:52,793 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:17:02,257 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:17:02,258 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. = [FAIL] (high confidence)
+2025-12-10 07:17:02,258 - vm_automation - WARNING - [FAIL] NOT Verified: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:17:02,259 - vm_automation - WARNING -   LLM saw: A POWERSHELL TERMINAL WINDOW RUNNING INSIDE CMD.EXE SHOWING AN ERROR MESSAGE THAT THE 'GET-UPTIME' COMMAND IS NOT RECOGNIZED. THE OUTPUT DISPLAYS "GET-UPTIME : THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM" ALONG WITH ADDITIONAL ERROR DETAILS INCLUDING COMMANDNOTFOUNDEXCEPTION. THE TERMINAL HAS A BLACK BACKGROUND AS EXPECTED WHEN POWERSHELL RUNS INSIDE CMD.EXE, BUT CONTAINS ERROR
+2025-12-10 07:17:02,259 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 1
+2025-12-10 07:17:02,259 - vm_automation - ERROR -   Error indicator: 'ERROR MESSAGE'
+2025-12-10 07:17:02,259 - vm_automation - ERROR -   AI saw: A POWERSHELL TERMINAL WINDOW RUNNING INSIDE CMD.EXE SHOWING AN ERROR MESSAGE THAT THE 'GET-UPTIME' COMMAND IS NOT RECOGNIZED. THE OUTPUT DISPLAYS "GET-UPTIME : THE TERM 'GET-UPTIME' IS NOT RECOGNIZED ...
+2025-12-10 07:17:02,259 - vm_automation - WARNING - Retrying due to detected error (attempt 2/2)
+2025-12-10 07:17:04,263 - vm_automation - INFO - Retrying interactive PowerShell (attempt 2/2)...
+2025-12-10 07:17:05,298 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 07:17:08,473 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 07:17:17,991 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:17:17,992 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 07:17:17,992 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 07:17:17,992 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 07:17:17,992 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 07:17:19,953 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 07:17:19,956 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 07:17:40,116 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 07:17:42,649 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 07:17:52,810 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 07:18:01,568 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:18:01,569 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 07:18:01,569 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 07:18:01,569 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 07:18:01,569 - vm_automation - INFO - Typing command in PowerShell: Get-uptime
+2025-12-10 07:18:07,945 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:18:18,302 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:18:18,304 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors. = [FAIL] (high confidence)
+2025-12-10 07:18:18,304 - vm_automation - WARNING - [FAIL] NOT Verified: Terminal window showing PowerShell output after executing 'Get-uptime'. The command and its results should be visible in the terminal. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. FAIL if you see error messages like 'cannot be found', 'error', 'exception', or syntax errors.
+2025-12-10 07:18:18,304 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A POWERSHELL TERMINAL RUNNING INSIDE CMD.EXE, BUT IT DISPLAYS AN ERROR MESSAGE FOR THE 'GET-UPTIME' COMMAND. THE TERMINAL SHOWS RED TEXT INDICATING "THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM" WITH ADDITIONAL ERROR DETAILS INCLUDING "COMMANDNOTFOUNDEXCEPTION". SINCE ERROR MESSAGES ARE PRESENT, THIS FAILS THE VERIFICATION CRITERIA.<|END_OF_BOX|>
+2025-12-10 07:18:18,304 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 2
+2025-12-10 07:18:18,304 - vm_automation - ERROR -   Error indicator: 'ERROR MESSAGE'
+2025-12-10 07:18:18,305 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A POWERSHELL TERMINAL RUNNING INSIDE CMD.EXE, BUT IT DISPLAYS AN ERROR MESSAGE FOR THE 'GET-UPTIME' COMMAND. THE TERMINAL SHOWS RED TEXT INDICATING "THE TERM 'GET-UPTIME' IS NOT R...
+2025-12-10 07:18:18,305 - vm_automation - ERROR - PowerShell command failed after 2 attempts
+2025-12-10 07:18:18,305 - vm_automation - ERROR - Last error: Command produced error output
+2025-12-10 07:18:19,309 - __main__ - INFO - Filtered screenshots: 33 total -> 22 included in report
+2025-12-10 07:18:19,309 - __main__ - INFO - Verification complete: 5 steps, 22 screenshots
+2025-12-10 07:18:19,309 - vm_automation - INFO - Closing browser
+2025-12-10 07:18:19,437 - vm_automation - INFO - Browser closed
+2025-12-10 07:18:19,438 - __main__ - INFO - Step 5: Generating verification report
+2025-12-10 07:18:19,438 - __main__ - INFO - Generating BCDR test summary
+2025-12-10 07:18:24,456 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 07:18:24,458 - report_generator - INFO - JSON report saved: reports\verification_report_20251210_071824.json
+2025-12-10 07:18:24,648 - report_generator - INFO - HTML report saved: reports\verification_report_20251210_071824.html
+2025-12-10 07:18:24,650 - report_generator - INFO - Reports generated: JSON=reports\verification_report_20251210_071824.json, HTML=reports\verification_report_20251210_071824.html
+2025-12-10 07:18:24,651 - __main__ - INFO - ======================================================================
+2025-12-10 07:18:24,651 - __main__ - INFO - Verification Completed Successfully
+2025-12-10 07:18:24,651 - __main__ - INFO - HTML Report: reports\verification_report_20251210_071824.html
+2025-12-10 07:18:24,651 - __main__ - INFO - JSON Report: reports\verification_report_20251210_071824.json
+2025-12-10 07:18:24,651 - __main__ - INFO - ======================================================================
+2025-12-10 07:18:24,651 - __main__ - INFO - Step 6: Cleaning up - Destroying VM
+2025-12-10 07:18:24,651 - __main__ - INFO - Destroying VM: virt_pw5kfwmcixpj
+2025-12-10 07:18:24,652 - slide_client - INFO - Destroying VM: virt_pw5kfwmcixpj
+2025-12-10 07:18:25,677 - slide_client - INFO - VM virt_pw5kfwmcixpj destroyed successfully
+2025-12-10 07:18:25,677 - __main__ - INFO - VM destroyed successfully
+2025-12-10 08:18:13,971 - __main__ - INFO - Initializing Verification Orchestrator
+2025-12-10 08:18:14,150 - llm_client - INFO - Initialized LLM client with model: zai-org/GLM-4.6V:zai-org at https://router.huggingface.co/v1
+2025-12-10 08:18:14,151 - __main__ - INFO - Using username from command line: Teknologize
+2025-12-10 08:18:14,151 - __main__ - INFO - Using password from command line
+2025-12-10 08:18:14,151 - __main__ - INFO - ======================================================================
+2025-12-10 08:18:14,151 - __main__ - INFO - Starting VM Verification Workflow
+2025-12-10 08:18:14,151 - __main__ - INFO - ======================================================================
+2025-12-10 08:18:14,151 - __main__ - INFO - Step 1: Retrieving latest snapshot
+2025-12-10 08:18:14,835 - slide_client - INFO - Found latest snapshot: s_ja4k6flwbz9e from 2025-12-10T16:00:00.001706Z
+2025-12-10 08:18:14,835 - __main__ - INFO - Using snapshot: s_ja4k6flwbz9e from 2025-12-10T16:01:04.816381Z
+2025-12-10 08:18:14,933 - __main__ - INFO - Agent: TEK-DC02 (windows)
+2025-12-10 08:18:14,933 - __main__ - INFO - Step 2: Creating VM from snapshot
+2025-12-10 08:18:14,933 - __main__ - INFO - Using local device: d_3mlfn75e9xn3
+2025-12-10 08:18:14,933 - slide_client - INFO - Creating VM from snapshot s_ja4k6flwbz9e with network=network-none
+2025-12-10 08:18:26,596 - slide_client - INFO - VM created successfully: virt_ppw1t1pg5q5p
+2025-12-10 08:18:26,596 - __main__ - INFO - VM created: virt_ppw1t1pg5q5p
+2025-12-10 08:18:26,596 - __main__ - INFO - Waiting for VM to be ready (starts automatically)...
+2025-12-10 08:18:26,596 - slide_client - INFO - Waiting for VM virt_ppw1t1pg5q5p to be ready (timeout: 300s)
+2025-12-10 08:18:26,692 - slide_client - INFO - VM virt_ppw1t1pg5q5p is ready
+2025-12-10 08:18:26,787 - __main__ - INFO - VM state: running
+2025-12-10 08:18:26,787 - __main__ - INFO - Step 3: Retrieving noVNC access URL
+2025-12-10 08:18:26,886 - slide_client - INFO - Constructed VNC URL for VM virt_ppw1t1pg5q5p: https://slide.recipes/mcpTools/vncViewer.php?id=virt_ppw1t1pg5q5p&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_ppw1t1pg5q5p&password=vwZouJwN=
+2025-12-10 08:18:26,887 - __main__ - INFO - noVNC URL obtained: https://slide.recipes/mcpTools/vncViewer.php?id=vi...
+2025-12-10 08:18:26,887 - __main__ - INFO - Step 4: Performing automated verification
+2025-12-10 08:18:26,887 - vm_automation - INFO - Starting Playwright browser
+2025-12-10 08:18:27,458 - vm_automation - INFO - Browser started successfully
+2025-12-10 08:18:27,459 - __main__ - INFO - Connecting to VM via noVNC
+2025-12-10 08:18:27,459 - vm_automation - INFO - Connecting to VM via noVNC: https://slide.recipes/mcpTools/vncViewer.php?id=virt_ppw1t1pg5q5p&ws=wss%3A%2F%2Fgateway1.slide.tech%3A443%2Fws%2Fvirt_ppw1t1pg5q5p&password=vwZouJwN=
+2025-12-10 08:18:28,845 - vm_automation - INFO - Waiting for noVNC to connect...
+2025-12-10 08:18:38,964 - vm_automation - INFO - Successfully connected to VM via noVNC
+2025-12-10 08:18:38,964 - __main__ - INFO - Waiting for Windows desktop
+2025-12-10 08:18:38,964 - vm_automation - INFO - Waiting for Windows desktop to be ready
+2025-12-10 08:18:38,964 - vm_automation - INFO - Waiting 120 seconds for Windows to boot...
+2025-12-10 08:20:39,085 - vm_automation - INFO - Windows desktop should be ready
+2025-12-10 08:20:39,085 - __main__ - INFO - Logging into Windows
+2025-12-10 08:20:39,086 - vm_automation - INFO - Logging into Windows as Teknologize
+2025-12-10 08:20:39,086 - vm_automation - INFO - Waiting for Windows login screen to appear...
+2025-12-10 08:20:39,086 - vm_automation - INFO - Checking for login screen (attempt 1/60)...
+2025-12-10 08:20:44,237 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:20:49,571 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:20:49,576 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:20:49,576 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:20:49,576 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS IN A CONFIGURATION OR STARTUP PROCESS, NOT SHOWING A LOGIN SCREEN WITH USERNAME/PASSWORD FIELDS.<|END_OF_BOX|>
+2025-12-10 08:20:49,576 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS IN A CONFIGURATION OR STARTUP PROCESS, NOT SHOWING A LOGIN SCREEN WITH USERNAME/PASSWORD FIELDS.<|END_OF_BOX|>
+2025-12-10 08:20:59,577 - vm_automation - INFO - Checking for login screen (attempt 2/60)...
+2025-12-10 08:20:59,650 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:05,875 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:21:05,876 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:21:05,876 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:05,876 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING A SYSTEM CONFIGURATION PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH REMOTE ACCESS (AS EVIDENCED BY THE CONTROL PANEL AT THE TOP), BUT THE CONTENT DISPLAYED IS A SYSTEM SETTINGS APPLICATION PROCESS RATHER THAN A LOGIN INTERFACE.<|END_OF_BOX|>
+2025-12-10 08:21:05,876 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM SCREEN WITH A BLUE BACKGROUND DISPLAYING "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING A SYSTEM CONFIGURATION PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH REMOTE ACCESS (AS EVIDENCED BY THE CONTROL PANEL AT THE TOP), BUT THE CONTENT DISPLAYED IS A SYSTEM SETTINGS APPLICATION PROCESS RATHER THAN A LOGIN INTERFACE.<|END_OF_BOX|>
+2025-12-10 08:21:15,876 - vm_automation - INFO - Checking for login screen (attempt 3/60)...
+2025-12-10 08:21:20,985 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:28,115 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:21:28,116 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:21:28,116 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:28,116 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS A SYSTEM CONFIGURATION/PROCESS SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP.<|END_OF_BOX|>
+2025-12-10 08:21:28,116 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS A SYSTEM CONFIGURATION/PROCESS SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND "CTRL+ALT+DEL" BUTTON AT THE TOP.<|END_OF_BOX|>
+2025-12-10 08:21:38,116 - vm_automation - INFO - Checking for login screen (attempt 4/60)...
+2025-12-10 08:21:38,211 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:44,588 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:21:44,589 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:21:44,589 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:21:44,589 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS PROCESSING SETTINGS RATHER THAN DISPLAYING A LOGIN INTERFACE WITH USERNAME AND PASSWORD FIELDS. THE REMOTE ACCESS INTERFACE IS VISIBLE AT THE TOP, CONFIRMING THIS IS VIEWED THROUGH VNC/NOVNC AS EXPECTED.<|END_OF_BOX|>
+2025-12-10 08:21:44,589 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING THE SYSTEM IS PROCESSING SETTINGS RATHER THAN DISPLAYING A LOGIN INTERFACE WITH USERNAME AND PASSWORD FIELDS. THE REMOTE ACCESS INTERFACE IS VISIBLE AT THE TOP, CONFIRMING THIS IS VIEWED THROUGH VNC/NOVNC AS EXPECTED.<|END_OF_BOX|>
+2025-12-10 08:21:54,590 - vm_automation - INFO - Checking for login screen (attempt 5/60)...
+2025-12-10 08:21:54,673 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:01,421 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:22:01,422 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:22:01,422 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:01,422 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING ANIMATION, INDICATING A SYSTEM PROCESS IS RUNNING RATHER THAN A LOGIN INTERFACE WITH USERNAME/PASSWORD FIELDS. THE NOVNC INTERFACE IS VISIBLE AT THE TOP, CONFIRMING REMOTE ACCESS, BUT THE CONTENT DISPLAYED IS A SYSTEM SETTINGS APPLICATION SCREEN, NOT A LOGIN PROMPT.<|END_OF_BOX|>
+2025-12-10 08:22:01,422 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING ANIMATION, INDICATING A SYSTEM PROCESS IS RUNNING RATHER THAN A LOGIN INTERFACE WITH USERNAME/PASSWORD FIELDS. THE NOVNC INTERFACE IS VISIBLE AT THE TOP, CONFIRMING REMOTE ACCESS, BUT THE CONTENT DISPLAYED IS A SYSTEM SETTINGS APPLICATION SCREEN, NOT A LOGIN PROMPT.<|END_OF_BOX|>
+2025-12-10 08:22:11,422 - vm_automation - INFO - Checking for login screen (attempt 6/60)...
+2025-12-10 08:22:16,561 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:23,749 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:22:23,750 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:22:23,750 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:23,750 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PROCESS, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION (VNC/NOVNC) AS EVIDENCED BY THE DARK BORDER AND CONTROL BUTTONS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 08:22:23,750 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS APPEARS TO BE A SYSTEM CONFIGURATION OR STARTUP PROCESS, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE IS BEING VIEWED THROUGH A REMOTE ACCESS SESSION (VNC/NOVNC) AS EVIDENCED BY THE DARK BORDER AND CONTROL BUTTONS AT THE TOP.<|END_OF_BOX|>
+2025-12-10 08:22:33,751 - vm_automation - INFO - Checking for login screen (attempt 7/60)...
+2025-12-10 08:22:33,835 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:40,817 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:22:40,818 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:22:40,818 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:40,819 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS A SYSTEM PROCESSING SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP OF THE SCREEN.<|END_OF_BOX|>
+2025-12-10 08:22:40,819 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A WINDOWS SYSTEM WITH A BLUE BACKGROUND DISPLAYING A LOADING SPINNER AND THE TEXT "APPLYING COMPUTER SETTINGS" IN THE CENTER. THIS IS A SYSTEM PROCESSING SCREEN, NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE VIEWED THROUGH VNC/NOVNC REMOTE ACCESS AS INDICATED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS AT THE TOP OF THE SCREEN.<|END_OF_BOX|>
+2025-12-10 08:22:50,819 - vm_automation - INFO - Checking for login screen (attempt 8/60)...
+2025-12-10 08:22:50,903 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:58,286 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:22:58,287 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [FAIL] (high confidence)
+2025-12-10 08:22:58,287 - vm_automation - WARNING - [FAIL] NOT Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:22:58,287 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING A SYSTEM CONFIGURATION PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH REMOTE ACCESS (VNC/NOVNC) AS EVIDENCED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 08:22:58,287 - vm_automation - WARNING - Login screen not ready yet. AI saw: THE SCREENSHOT SHOWS A BLUE WINDOWS SCREEN WITH "APPLYING COMPUTER SETTINGS" TEXT AND A LOADING SPINNER, INDICATING A SYSTEM CONFIGURATION PROCESS IS RUNNING. THIS IS NOT A LOGIN SCREEN WITH USERNAME AND PASSWORD FIELDS. THE INTERFACE APPEARS TO BE ACCESSED THROUGH REMOTE ACCESS (VNC/NOVNC) AS EVIDENCED BY THE "CONNECTED" STATUS AND CONTROL BUTTONS IN THE TOP RIGHT CORNER.<|END_OF_BOX|>
+2025-12-10 08:23:08,287 - vm_automation - INFO - Checking for login screen (attempt 9/60)...
+2025-12-10 08:23:13,632 - vm_automation - INFO - Verifying UI state: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows.
+2025-12-10 08:23:23,951 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:23:23,952 - llm_client - INFO - UI Verification: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. = [OK] (high confidence)
+2025-12-10 08:23:23,952 - vm_automation - INFO - [OK] Verified: A Windows login screen showing username and password fields. Note: This is being viewed through VNC/noVNC remote access, which is expected and correct. Look for login credentials fields, not whether it's 'native' Windows. (high confidence)
+2025-12-10 08:23:23,952 - vm_automation - INFO - [OK] Login screen is ready! (high confidence)
+2025-12-10 08:23:23,952 - vm_automation - INFO -   AI saw: WINDOWS LOGIN SCREEN SHOWING THE USERNAME "TEKNOLOGIZE\TEKNOLOGIZE" AND A PASSWORD FIELD, VIEWED THROUGH NOVNC REMOTE ACCESS INTERFACE WITH "CONNECTED" STATUS VISIBLE AT THE TOP.<|END_OF_BOX|>
+2025-12-10 08:23:23,952 - vm_automation - INFO - Login screen confirmed ready - detecting which fields are visible...
+2025-12-10 08:23:40,041 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:23:40,042 - llm_client - INFO - Login fields detected: username=False, password=True
+2025-12-10 08:23:40,042 - llm_client - INFO -   Detection reasoning: The login screen shows a user icon, the pre-filled username "TEKNOLOGIZE\teknologize" (not editable), an empty password input field with "Password" placeholder, and an "Other user" option at the bottom.<|end_of_box|>
+2025-12-10 08:23:40,042 - vm_automation - INFO - AI detected fields: The login screen shows a user icon, the pre-filled username "TEKNOLOGIZE\teknologize" (not editable), an empty password input field with "Password" placeholder, and an "Other user" option at the bottom.<|end_of_box|>
+2025-12-10 08:23:40,043 - vm_automation - INFO - Displayed username on screen: TEKNOLOGIZE\teknologize
+2025-12-10 08:23:40,043 - vm_automation - INFO - [OK] Cached username matches expected: Teknologize
+2025-12-10 08:23:40,043 - vm_automation - INFO - Will use cached user with password-only login
+2025-12-10 08:23:41,065 - vm_automation - INFO - Only password field detected - skipping username entry
+2025-12-10 08:23:41,066 - vm_automation - INFO - Ensuring password field has focus...
+2025-12-10 08:23:42,125 - vm_automation - INFO - Clicking directly on password field at VNC coords (960, 560)
+2025-12-10 08:23:43,135 - vm_automation - INFO - Clearing password field...
+2025-12-10 08:23:43,943 - vm_automation - INFO - Typing password...
+2025-12-10 08:23:51,460 - vm_automation - INFO - Pressing Enter to login...
+2025-12-10 08:23:51,462 - vm_automation - INFO - Waiting 15 seconds for Windows desktop to load...
+2025-12-10 08:24:06,462 - vm_automation - INFO - Verifying login was successful...
+2025-12-10 08:24:06,676 - vm_automation - INFO - Verifying UI state: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen.
+2025-12-10 08:24:17,456 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:24:17,457 - llm_client - INFO - UI Verification: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. = [OK] (high confidence)
+2025-12-10 08:24:17,457 - vm_automation - INFO - [OK] Verified: Windows desktop with taskbar visible at the bottom, showing the user successfully logged in. IMPORTANT: The Shutdown Event Tracker dialog may be present after VSS backup - this is EXPECTED and NORMAL. If you see the desktop with taskbar AND optionally a Shutdown Event Tracker dialog, consider this VERIFIED. Viewing via VNC is expected. FAIL if you see: login screen, password prompt, 'incorrect password', or locked screen. (high confidence)
+2025-12-10 08:24:17,457 - vm_automation - INFO - [OK] Login verified - Windows desktop visible
+2025-12-10 08:24:17,457 - vm_automation - INFO - Disabling screen lock timeout...
+2025-12-10 08:24:32,618 - vm_automation - INFO - [OK] Screen lock timeout disabled
+2025-12-10 08:24:32,787 - vm_automation - INFO - [OK] Login complete and verified
+2025-12-10 08:24:32,787 - __main__ - INFO - [OK] Login successful!
+2025-12-10 08:24:32,787 - __main__ - INFO - Running PowerShell command 1/2: Get-Service | fl
+2025-12-10 08:24:32,787 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-Service | fl
+2025-12-10 08:24:33,841 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 08:24:37,021 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 08:24:45,159 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:24:45,160 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 08:24:45,160 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 08:24:45,160 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 08:24:45,160 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 08:24:47,096 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 08:24:47,099 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 08:25:07,231 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 08:25:09,759 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 08:25:19,888 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 08:25:27,352 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:25:27,353 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 08:25:27,353 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 08:25:27,354 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 08:25:27,354 - vm_automation - INFO - Typing command in PowerShell: Get-Service | fl
+2025-12-10 08:25:34,590 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:25:44,766 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:25:44,767 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. = [OK] (high confidence)
+2025-12-10 08:25:44,767 - vm_automation - INFO - [OK] Verified: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. (high confidence)
+2025-12-10 08:25:44,767 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 1
+2025-12-10 08:25:44,768 - vm_automation - ERROR -   Error indicator: 'RED TEXT'
+2025-12-10 08:25:44,768 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A TERMINAL WINDOW WITH POWERSHELL RUNNING INSIDE CMD.EXE (AS INDICATED BY THE TITLE BAR). THE TERMINAL DISPLAYS OUTPUT THAT APPEARS TO BE FROM THE 'GET-SERVICE | FL' COMMAND, SHOWING SERVICE INFORMATION IN A FORMATTED LIST INCLUDING DETAILS LIKE NAME, DISPLAYNAME, STATUS, AND OT...
+2025-12-10 08:25:44,768 - vm_automation - WARNING - Retrying due to detected error (attempt 2/2)
+2025-12-10 08:25:46,774 - vm_automation - INFO - Retrying interactive PowerShell (attempt 2/2)...
+2025-12-10 08:25:47,811 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 08:25:50,961 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 08:26:00,724 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:26:00,725 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 08:26:00,725 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 08:26:00,725 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 08:26:00,725 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 08:26:02,644 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 08:26:02,648 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 08:26:22,788 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 08:26:25,312 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 08:26:35,438 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 08:26:43,346 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:26:43,347 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 08:26:43,347 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 08:26:43,347 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 08:26:43,347 - vm_automation - INFO - Typing command in PowerShell: Get-Service | fl
+2025-12-10 08:26:50,588 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:27:01,005 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:27:01,006 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. = [OK] (high confidence)
+2025-12-10 08:27:01,006 - vm_automation - INFO - [OK] Verified: Terminal window showing PowerShell output after executing 'Get-Service | fl'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. (high confidence)
+2025-12-10 08:27:01,006 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 2
+2025-12-10 08:27:01,006 - vm_automation - ERROR -   Error indicator: 'RED TEXT'
+2025-12-10 08:27:01,006 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A TERMINAL WINDOW WITH POWERSHELL RUNNING INSIDE CMD.EXE (BLACK BACKGROUND, WHITE TEXT). THE OUTPUT CLEARLY DISPLAYS THE RESULTS OF 'GET-SERVICE | FL' COMMAND, SHOWING DETAILED INFORMATION ABOUT WINDOWS SERVICES INCLUDING THEIR PROPERTIES LIKE DISPLAYNAME, STATUS, CANSTATUS, DEP...
+2025-12-10 08:27:01,006 - vm_automation - ERROR - PowerShell command failed after 2 attempts
+2025-12-10 08:27:01,007 - vm_automation - ERROR - Last error: Command produced error output
+2025-12-10 08:27:02,013 - __main__ - INFO - Running PowerShell command 2/2: Get-uptime
+2025-12-10 08:27:02,014 - vm_automation - INFO - Running PowerShell command interactively via cmd.exe: Get-uptime
+2025-12-10 08:27:03,056 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 08:27:06,199 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 08:27:13,707 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:27:13,708 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 08:27:13,708 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 08:27:13,709 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 08:27:13,709 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 08:27:15,614 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 08:27:15,616 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 08:27:35,756 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 08:27:38,290 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 08:27:48,411 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 08:27:57,709 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:27:57,710 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 08:27:57,710 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 08:27:57,710 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 08:27:57,710 - vm_automation - INFO - Typing command in PowerShell: Get-uptime
+2025-12-10 08:28:04,068 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:28:11,483 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:28:11,485 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. = [FAIL] (high confidence)
+2025-12-10 08:28:11,485 - vm_automation - WARNING - [FAIL] NOT Verified: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:28:11,485 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A POWERSHELL SESSION RUNNING INSIDE CMD.EXE, BUT THE 'GET-UPTIME' COMMAND RESULTED IN A RED ERROR MESSAGE INDICATING "THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM." THIS IS A COMMANDNOTFOUNDEXCEPTION ERROR, WHICH MEANS THE COMMAND FAILED TO EXECUTE PROPERLY. THE PRESENCE OF RED ERROR TEXT AND ERROR MESSAGES MEANS THIS SHOULD BE MARKED AS NOT VERIFIED.<|END_OF_BOX|>
+2025-12-10 08:28:11,485 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 1
+2025-12-10 08:28:11,485 - vm_automation - ERROR -   Error indicator: 'RED ERROR'
+2025-12-10 08:28:11,485 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A POWERSHELL SESSION RUNNING INSIDE CMD.EXE, BUT THE 'GET-UPTIME' COMMAND RESULTED IN A RED ERROR MESSAGE INDICATING "THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM." THIS IS A COMMANDNOTFOUNDEXCEPTION ERROR, WHICH MEA...
+2025-12-10 08:28:11,485 - vm_automation - WARNING - Retrying due to detected error (attempt 2/2)
+2025-12-10 08:28:13,488 - vm_automation - INFO - Retrying interactive PowerShell (attempt 2/2)...
+2025-12-10 08:28:14,523 - vm_automation - INFO - Pressing Win+R to open Run dialog
+2025-12-10 08:28:17,664 - vm_automation - INFO - Verifying UI state: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons.
+2025-12-10 08:28:25,861 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:28:25,862 - llm_client - INFO - UI Verification: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. = [OK] (high confidence)
+2025-12-10 08:28:25,862 - vm_automation - INFO - [OK] Verified: Windows Run dialog box is open on the screen, showing a text input field with 'Open:' label. The dialog should have OK and Cancel buttons. (high confidence)
+2025-12-10 08:28:25,863 - vm_automation - INFO - [OK] Run dialog is open and ready
+2025-12-10 08:28:25,863 - vm_automation - INFO - Typing cmd.exe in Run dialog (text field should have focus)
+2025-12-10 08:28:27,788 - vm_automation - INFO - Pressing Enter to launch cmd.exe
+2025-12-10 08:28:27,789 - vm_automation - INFO - Waiting 20 seconds for cmd.exe to open...
+2025-12-10 08:28:47,905 - vm_automation - INFO - Typing powershell.exe in cmd window
+2025-12-10 08:28:50,445 - vm_automation - INFO - Waiting 10 seconds for PowerShell to launch...
+2025-12-10 08:29:00,569 - vm_automation - INFO - Verifying UI state: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background.
+2025-12-10 08:29:28,090 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:29:28,091 - llm_client - INFO - UI Verification: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. = [OK] (high confidence)
+2025-12-10 08:29:28,091 - vm_automation - INFO - [OK] Verified: Command window showing PowerShell prompt (PS C:\...> or similar). The PowerShell prompt should be visible in the terminal window. Note: PowerShell is running inside cmd.exe, so there will be NO blue background. (high confidence)
+2025-12-10 08:29:28,091 - vm_automation - INFO - [OK] PowerShell prompt verified by AI
+2025-12-10 08:29:28,092 - vm_automation - INFO - Typing command in PowerShell: Get-uptime
+2025-12-10 08:29:34,413 - vm_automation - INFO - Verifying UI state: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:29:43,119 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:29:43,120 - llm_client - INFO - UI Verification: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED. = [FAIL] (high confidence)
+2025-12-10 08:29:43,120 - vm_automation - WARNING - [FAIL] NOT Verified: Terminal window showing PowerShell output after executing 'Get-uptime'. The command should show its output/results. Note: This is PowerShell running inside cmd.exe, so NO blue background expected. IMPORTANT: ONLY mark as FAIL if you see RED TEXT indicating an error, or if the terminal shows actual error messages (like 'cannot be found', 'access denied', etc.). If you see normal command output (even if white/gray text), mark as VERIFIED.
+2025-12-10 08:29:43,120 - vm_automation - WARNING -   LLM saw: THE SCREENSHOT SHOWS A POWERSHELL SESSION RUNNING INSIDE CMD.EXE WITH THE COMMAND "GET-UPTIME" EXECUTED. HOWEVER, THE OUTPUT SHOWS RED ERROR TEXT INDICATING THAT "THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM" WITH A COMMANDNOTFOUNDEXCEPTION ERROR. THIS IS AN ERROR CONDITION, NOT THE EXPECTED SUCCESSFUL OUTPUT OF THE GET-UPTIME COMMAND.<|END_OF_BOX|>
+2025-12-10 08:29:43,120 - vm_automation - ERROR - [FAIL] PowerShell command error detected on attempt 2
+2025-12-10 08:29:43,121 - vm_automation - ERROR -   Error indicator: 'RED ERROR'
+2025-12-10 08:29:43,121 - vm_automation - ERROR -   AI saw: THE SCREENSHOT SHOWS A POWERSHELL SESSION RUNNING INSIDE CMD.EXE WITH THE COMMAND "GET-UPTIME" EXECUTED. HOWEVER, THE OUTPUT SHOWS RED ERROR TEXT INDICATING THAT "THE TERM 'GET-UPTIME' IS NOT RECOGNIZED AS THE NAME OF A CMDLET, FUNCTION, SCRIPT FILE, OR OPERABLE PROGRAM" WITH A COMMANDNOTFOUNDEXCEPT...
+2025-12-10 08:29:43,121 - vm_automation - ERROR - PowerShell command failed after 2 attempts
+2025-12-10 08:29:43,121 - vm_automation - ERROR - Last error: Command produced error output
+2025-12-10 08:29:44,124 - __main__ - INFO - Filtered screenshots: 33 total -> 22 included in report
+2025-12-10 08:29:44,125 - __main__ - INFO - Verification complete: 5 steps, 22 screenshots
+2025-12-10 08:29:44,125 - vm_automation - INFO - Closing browser
+2025-12-10 08:29:44,252 - vm_automation - INFO - Browser closed
+2025-12-10 08:29:44,252 - __main__ - INFO - Step 5: Generating verification report
+2025-12-10 08:29:44,252 - __main__ - INFO - Generating BCDR test summary
+2025-12-10 08:29:51,128 - httpx - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 08:29:51,130 - report_generator - INFO - JSON report saved: reports\verification_report_20251210_082951.json
+2025-12-10 08:29:51,278 - report_generator - INFO - HTML report saved: reports\verification_report_20251210_082951.html
+2025-12-10 08:29:51,279 - report_generator - INFO - Reports generated: JSON=reports\verification_report_20251210_082951.json, HTML=reports\verification_report_20251210_082951.html
+2025-12-10 08:29:51,280 - __main__ - INFO - ======================================================================
+2025-12-10 08:29:51,280 - __main__ - INFO - Verification Completed Successfully
+2025-12-10 08:29:51,280 - __main__ - INFO - HTML Report: reports\verification_report_20251210_082951.html
+2025-12-10 08:29:51,280 - __main__ - INFO - JSON Report: reports\verification_report_20251210_082951.json
+2025-12-10 08:29:51,280 - __main__ - INFO - ======================================================================
+2025-12-10 08:29:51,280 - __main__ - INFO - Step 6: Cleaning up - Destroying VM
+2025-12-10 08:29:51,281 - __main__ - INFO - Destroying VM: virt_ppw1t1pg5q5p
+2025-12-10 08:29:51,281 - slide_client - INFO - Destroying VM: virt_ppw1t1pg5q5p
+2025-12-10 08:29:52,286 - slide_client - INFO - VM virt_ppw1t1pg5q5p destroyed successfully
+2025-12-10 08:29:52,286 - __main__ - INFO - VM destroyed successfully

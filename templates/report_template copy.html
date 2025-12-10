@@ -399,19 +399,15 @@
             </div>
         </div>
 
-<div class="card">
+        <div class="card">
             <h2 class="section-title">Visual Evidence</h2>
             <div class="screenshot-grid">
                 {% for screenshot in screenshot_data %}
                 <div class="screenshot-item">
                     {% if screenshot.base64 %}
-                    <img 
-                        src="{{ screenshot.base64 }}" 
-                        alt="{{ screenshot.name }}" 
-                        title="Click to expand"
-                        style="cursor: pointer;"
-                        onclick="openScreenshotModal(this)"
-                    >
+                    <a href="{{ screenshot.base64 }}" target="_blank">
+                        <img src="{{ screenshot.base64 }}" alt="{{ screenshot.name }}" title="Click to expand">
+                    </a>
                     {% else %}
                     <div style="height: 160px; display: flex; align-items: center; justify-content: center; background: #fef2f2; color: #dc2626;">
                         No Image Available
@@ -421,33 +417,6 @@
                 </div>
                 {% endfor %}
             </div>
-
-            <dialog id="screenshotModal" onclick="this.close()" style="border:none; background:transparent; max-width:95vw; max-height:95vh; padding:0;">
-                <img id="modalImg" style="width:100%; height:100%; object-fit:contain; display:block;" src="">
-                <div style="text-align: center; color: white; background: rgba(0,0,0,0.5); padding: 5px;">Click anywhere to close</div>
-            </dialog>
-
-            <script>
-                function openScreenshotModal(imgElement) {
-                    const modal = document.getElementById('screenshotModal');
-                    const modalImg = document.getElementById('modalImg');
-                    
-                    // Copy the base64 src from the clicked image to the modal image
-                    modalImg.src = imgElement.src;
-                    
-                    // Show the modal using native API
-                    modal.showModal();
-                    
-                    // Optional: Blur the background
-                    modal.style.backdropFilter = "blur(5px)";
-                }
-            </script>
-            
-            <style>
-                dialog::backdrop {
-                    background: rgba(0, 0, 0, 0.8);
-                }
-            </style>
         </div>
 
         <div class="card">
